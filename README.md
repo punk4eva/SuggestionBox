@@ -1,0 +1,2 @@
+# SuggestionBox
+A school project

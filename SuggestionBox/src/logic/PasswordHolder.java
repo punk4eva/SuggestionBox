@@ -16,16 +16,19 @@ import java.util.logging.Logger;
 /**
  *
  * @author Adam Whittaker
+ *
+ * Holds hashed passwords.
  */
 public class PasswordHolder{
     
+    
     //Variable declaration
-    public static Scanner scan = new Scanner(System.in);
-    public static HashMap<String, String> userHashes = new HashMap<>();
-    public static ReadWrite rw;
+    protected static Scanner scan = new Scanner(System.in);
+    protected HashMap<String, String> userHashes = new HashMap<>();
+    protected static ReadWrite rw;
     
     //Sorting interface allows lambdas to by given as parameters.
-    public interface Sort{
+    private interface Sort{
         //Abstract method. E.g: String -> boolean
         boolean select(String str);
     }
@@ -33,8 +36,10 @@ public class PasswordHolder{
     
     //Utility Methods
     
-    //Takes passwords stored in a file and puts them in userHashes.
-    public static void pull(){
+    /**
+    * Takes passwords stored in a file and puts them in userHashes.
+    */
+    protected void pull(){
         String saves = rw.read();
         String segments[] = saves.split("/EndOfEntry");
         try{
@@ -51,8 +56,10 @@ public class PasswordHolder{
         //the Exception because there are no <user> or <pass> tags.
     }
     
-    //Puts the user passwords stored in userHashes into a file.
-    public static void push(){
+    /**
+    * Puts the user passwords stored in userHashes into a file.
+    */
+    protected void push(){
         userHashes.entrySet().stream().forEach(entry ->{
             String user = entry.getKey();
             String hashpass = entry.getValue();
@@ -61,8 +68,12 @@ public class PasswordHolder{
         });
     }
     
-    //Checks if the given password is safe
-    public static void sanitise(String p) throws PasswordUnsafeException{
+    /**
+    * Checks if the given password is safe.
+    * @param p The password to be checked.
+    * @throws PasswordUnsafeException to be caught if password is unsafe.
+    */
+    protected static void sanitise(String p) throws PasswordUnsafeException{
         if(p.length()<8||p.length()>16) throw new PasswordUnsafeException(
                 "Password must be between 8 and 16 characters in length.");
         String whitelist = "1234567890qwertyuiopasdfghjklzxcvbnm.<>!{}?-_+ ";
@@ -89,9 +100,14 @@ public class PasswordHolder{
     
     //Class Methods
     
-    //The password needs to be hashed to protect so that no one can steal the 
-    //passwords because they aren't being stored.
-    public static String hash(String str) throws UnsupportedEncodingException, NoSuchAlgorithmException{
+    /**
+    * The password needs to be hashed to protect so that no one can steal the 
+    * passwords because they aren't being stored.
+    * @throws UnsupportedEncodingException Never thrown, just required for method.
+    * @throws NoSuchAlgorithmException Never thrown, just required for method.
+    * @param str The String to be hashed.
+    */
+    protected static String hash(String str) throws UnsupportedEncodingException, NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(str.getBytes("UTF-8"));
         byte[] digest = md.digest();
@@ -99,7 +115,7 @@ public class PasswordHolder{
     }
     
     //Checks if the given user has the given password.
-    public static boolean passwordValidation(String user, String password) throws PasswordNotFoundException{
+    protected static boolean passwordValidation(String user, String password) throws PasswordNotFoundException{
         try{
             //Storing the userHashes.get(user) in a temporary String is more
             //efficient because searching a massive HashMap twice is impractical.
@@ -114,7 +130,7 @@ public class PasswordHolder{
     }
     
     //Adds a new user.
-    public static void newUser(String userName, String password) throws PasswordUnsafeException{
+    protected static void newUser(String userName, String password) throws PasswordUnsafeException{
         try {
             sanitise(password);
             userHashes.put(userName, hash(password));
@@ -123,7 +139,7 @@ public class PasswordHolder{
     
     //Displays all users and their hashed passwords where the given lambda 
     //returns true.
-    public static void displayAll(Sort sort){
+    protected static void displayAll(Sort sort){
         userHashes.entrySet().stream().forEach(entry -> {
             String user = entry.getKey();
             String hashpass = entry.getValue();
@@ -133,12 +149,13 @@ public class PasswordHolder{
     }
     
     //Displays all users and their hashed passwords.
-    public static void displayAll(){
+    protected static void displayAll(){
         displayAll(n -> true);
     }
     
     
-    public static void main(String args[]) throws NoSuchAlgorithmException, UnsupportedEncodingException, PasswordUnsafeException{
+    //Only debugging
+    protected static void main(String args[]) throws NoSuchAlgorithmException, UnsupportedEncodingException, PasswordUnsafeException{
         System.out.println("Type the file path to get the stored passwords from...");
         rw = new ReadWrite(scan.nextLine());
         pull();

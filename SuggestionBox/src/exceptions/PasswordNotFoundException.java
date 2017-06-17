@@ -3,20 +3,20 @@ package exceptions;
 
 /**
  *
- * @author Adam WHittaker
+ * @author Adam Whittaker
+ *
+ * This is an Exception for picking up missing passwords/users.
  */
-public class PasswordNotFoundException extends Exception {
+public class PasswordNotFoundException extends Exception{
 
     /**
-     * Creates a new instance of <code>PasswordNotFoundException</code> without
-     * detail message.
+     * Creates a PasswordNotFoundException without a detail message.
      */
     public PasswordNotFoundException(){}
 
     /**
-     * Constructs an instance of <code>PasswordNotFoundException</code> with the
-     * specified detail message.
-     *
+     * Constructs a PasswordNotFoundException with the specified 
+     * detail message.
      * @param msg the detail message.
      */
     public PasswordNotFoundException(String msg){

@@ -4,19 +4,19 @@ package exceptions;
 /**
  *
  * @author Adam Whittaker
+ *
+ * This Exception is for picking up unsafe passwords.
  */
 public class PasswordUnsafeException extends Exception{
 
     /**
-     * Creates a new instance of <code>PasswordUnsafeException</code> without
-     * detail message.
+     * Creates a PasswordUnsafeException without a detail message.
      */
     public PasswordUnsafeException(){}
 
     /**
-     * Constructs an instance of <code>PasswordUnsafeException</code> with the
-     * specified detail message.
-     *
+     * Constructs a PasswordUnsafeException with the specified
+     * detail message.
      * @param msg the detail message.
      */
     public PasswordUnsafeException(String msg){

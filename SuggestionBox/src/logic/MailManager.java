@@ -13,14 +13,29 @@ import javax.mail.internet.MimeMessage;
 /**
  *
  * @author Adam Whittaker
+ * 
+ * This class handles the sending of emails.
+ * @unfinished
+ * @untested
  */
 public class MailManager{
     
+    //The name of the local mail host.
     private static String host/** = something**/;
     
+    /**
+     * Sends an email.
+     * @param subject The subject of the email.
+     * @param message The content of the email.
+     * @param fromAddress The address that the email is being sent from. (To be
+     * removed)
+     * @param toAddresses The addresses that the email is being to.
+     */
     protected static void send(String subject, 
             String message,
-            String fromAddress,
+            String fromAddress, /**Replace permanently with 
+             * suggestionbox31@gmail.com after debugging.
+             */
             ArrayList<String> toAddresses){
         
         Properties prop = System.getProperties();
@@ -45,10 +60,11 @@ public class MailManager{
         }
     }
     
-    public static void main(String[] args){
+    //Testing: Delete After done debugging.
+    public static void main(String[] ignore){
         //Debugging: I have already created an email (suqqestionbox31@gmail.com)
-        //for the app to use, however I need the host server, so once we obtain 
-        //that (mabye it will work on the school computer) then we can test and
+        //for the project to use, however I need the host server, so once we obtain 
+        //that (maybe it will work on the school computer) then we can test and
         //delete the main() method.
         ArrayList<String> to = new ArrayList<>();
         to.add("adam271828@gmail.com");

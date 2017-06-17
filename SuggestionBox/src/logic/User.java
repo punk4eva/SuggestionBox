@@ -5,15 +5,19 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Random;
-import javafx.animation.Animation.Status;
 
 /**
  *
  * @author Adam Whittaker
+ * 
+ * This class stores user data.
+ * @unfinished
+ * @untested
  */
 public class User{
     
     
+    //Variable declaration
     protected String username;
     protected String hashedPassword;
     protected String emailAddress;
@@ -27,6 +31,15 @@ public class User{
     }
     
     
+    //Constructors
+
+    /**
+     * @param num The address of the user.
+     * @param un The user's username.
+     * @param pw The user's password.
+     * @param email The user's email.
+     * @param desc the user's description.
+     */
     public User(int num, String un, String pw, String email, String desc){
         userNum = num;
         username = un;
@@ -37,6 +50,12 @@ public class User{
         description = desc;
     }
     
+    /**
+     * @param num The address of the user.
+     * @param un The user's username.
+     * @param pw The user's password.
+     * @param email The user's email.
+     */
     public User(int num, String un, String pw, String email){
         userNum = num;
         username = un;
@@ -47,26 +66,51 @@ public class User{
     }
     
     
+    //Methods
+    
+    /**
+     * Prints the user's basic information.
+     */
     protected void print(){
         System.out.print("User: " + username + "\nEmail: " + emailAddress);
     }
+    
+    /**
+     * Prints the user's basic information and a newline.
+     */
     protected void println(){
         System.out.println("User: " + username +"\nEmail: " + emailAddress);
     }
+    
+    /**
+     * Prints the user's extended information.
+     */
     protected void printexd(){
         println();
         System.out.println("User Number: " + userNum + "\nDescription: " 
                 + description);
     }
     
+    /**
+     * Changes the user's Status.
+     * @param s The user's new status.
+     */
     protected void changeStatus(String s){
         statMessage = Status.valueOf(s.toUpperCase());
     }
     
+    /**
+     * Changes the user's description.
+     * @param d The user's new description.
+     */
     protected void changeDesc(String d){
         description = d;
     }
     
+    /**
+     * Changes and validates the user's email.
+     * @param e The user's new email.
+     */
     protected void changeEmail(String e){
         emailAddress = e;
         validateEmail();
@@ -92,8 +136,8 @@ public class User{
             String input = SomeJFrameClass.inputCode();
             if(input==code) break;
             (ask whether to resend email) MailManager.send("SuggestionBox Email Validation",
-                    "Please validate your email, the code is " + code,
-                    "suggestionbox31@gmail.com", to);
+                    "Please validate your email, the code is " + code +
+                    ", suggestionbox31@gmail.com", to);
             etc.
             **/
         }

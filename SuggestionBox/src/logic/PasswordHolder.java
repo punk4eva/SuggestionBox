@@ -8,29 +8,42 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Adam Whittaker
  *
- * Holds hashed passwords.
+ * this class holds hashed passwords.
+ * @unfinished
+ * @untested
  */
 public class PasswordHolder{
     
     
     //Variable declaration
-    protected static Scanner scan = new Scanner(System.in);
     protected HashMap<String, String> userHashes = new HashMap<>();
     protected static ReadWrite rw;
     
     //Sorting interface allows lambdas to by given as parameters.
-    private interface Sort{
+    protected interface Sort{
         //Abstract method. E.g: String -> boolean
         boolean select(String str);
+    }
+    
+    //Constructors
+    
+    /**
+     * @param str The name of the file that contains the user profiles.
+     */
+    public PasswordHolder(String str){
+        rw = new ReadWrite(str);
+    }
+    
+    /**
+     * @param f The File that contains the user profiles.
+     */
+    public PasswordHolder(File f){
+        rw = new ReadWrite(f);
     }
     
     
@@ -101,11 +114,11 @@ public class PasswordHolder{
     //Class Methods
     
     /**
-    * The password needs to be hashed to protect so that no one can steal the 
-    * passwords because they aren't being stored.
+    * Hashes password to protect from theft. 
     * @throws UnsupportedEncodingException Never thrown, just required for method.
     * @throws NoSuchAlgorithmException Never thrown, just required for method.
     * @param str The String to be hashed.
+    * @return The hashed password.
     */
     protected static String hash(String str) throws UnsupportedEncodingException, NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -113,33 +126,49 @@ public class PasswordHolder{
         byte[] digest = md.digest();
         return String.format("%064x", new java.math.BigInteger(1, digest));
     }
-    
-    //Checks if the given user has the given password.
-    protected static boolean passwordValidation(String user, String password) throws PasswordNotFoundException{
+
+    /**
+     * Checks if the given user has the given password.
+     * @param user The user to check the password of.
+     * @param password The password entered.
+     * @throws exceptions.PasswordNotFoundException If there was is a failure to
+     * check the password or it is incorrect.
+     */
+    protected void passwordValidation(String user, String password) throws PasswordNotFoundException{
         try{
             //Storing the userHashes.get(user) in a temporary String is more
             //efficient because searching a massive HashMap twice is impractical.
             String temp = userHashes.get(user);
             if(temp==null) throw new PasswordNotFoundException("Username " + 
                     user + " does not exist.");
-            return temp.equals(hash(password));
+            if(!temp.equals(hash(password))) throw new PasswordNotFoundException(
+            "Incorrect password.");
         }catch(UnsupportedEncodingException | NoSuchAlgorithmException ignore){}
         //The method requires a try-catch block to catch the above exceptions
         //but since the hash function is always SHA-256 it will never throw them.
-        throw new PasswordNotFoundException("Unable to compare passwords.");
     }
     
-    //Adds a new user.
-    protected static void newUser(String userName, String password) throws PasswordUnsafeException{
+    /**
+     * Adds a new user.
+     * @param userName The username of the user.
+     * @param password The password of the user.
+     * @throws exceptions.PasswordUnsafeException If the given password is 
+     * unsafe.
+     */
+    protected void newUser(String userName, String password) throws PasswordUnsafeException{
         try {
             sanitise(password);
             userHashes.put(userName, hash(password));
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ignore){}
     }
     
-    //Displays all users and their hashed passwords where the given lambda 
-    //returns true.
-    protected static void displayAll(Sort sort){
+    /**
+     * Displays all users and their hashed passwords where the given lambda 
+     * returns true.
+     * @param sort The lambda expression that determines whether to display the
+     * password.
+     */
+    protected void displayAll(Sort sort){
         userHashes.entrySet().stream().forEach(entry -> {
             String user = entry.getKey();
             String hashpass = entry.getValue();
@@ -148,17 +177,25 @@ public class PasswordHolder{
         });
     }
     
-    //Displays all users and their hashed passwords.
-    protected static void displayAll(){
-        displayAll(n -> true);
+    /**
+     * Displays all users and their hashed passwords.
+     */
+    protected void displayAll(){
+        userHashes.entrySet().stream().forEach(entry -> {
+            String user = entry.getKey();
+            String hashpass = entry.getValue();
+            System.out.println("Username: " + user + 
+                    "\nHashed password: " + hashpass + "\n");
+        });
     }
     
     
     //Only debugging
     protected static void main(String args[]) throws NoSuchAlgorithmException, UnsupportedEncodingException, PasswordUnsafeException{
-        System.out.println("Type the file path to get the stored passwords from...");
-        rw = new ReadWrite(scan.nextLine());
-        pull();
-        displayAll();
+        //System.out.println("Type the file path to get the stored passwords from...");
+        //rw = new ReadWrite(scan.nextLine());
+        //pull();
+        //displayAll();
     }
+    
 }

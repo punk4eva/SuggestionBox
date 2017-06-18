@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailManager{
     
-    //The name of the local mail host.
+    //The name of the local mail host. UNCOMPLETED!
     private static String host/** = something**/;
     
     /**

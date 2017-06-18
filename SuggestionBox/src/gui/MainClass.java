@@ -6,17 +6,22 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 
-
+/*
+* @author Charlie Hands
+*
+* This is the main class that sets the JFrame and will run any different pages
+*/
 public class MainClass{
 
 	public static final int WIDTH = 1024, HEIGHT = WIDTH /12*9;
 	
 	private Login login = new Login();
 	
+	/*
+	* Initialises the frame.
+	*/
 	public MainClass(){
 		JFrame frame = new JFrame("WHSB Suggestion System");
-		
-		
 		
 		frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));

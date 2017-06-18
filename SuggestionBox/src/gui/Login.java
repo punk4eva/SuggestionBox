@@ -28,19 +28,18 @@ public class Login {
 	* Initialises all the components
 	*/
 	public Login(){
-		this.Username = new JTextField("", 15);
-		this.Password = new JPasswordField("", 15);
-		this.c = new GridBagConstraints();
-		this.UTitle = new JLabel("Username:");
-		this.PTitle = new JLabel("Password:");
-		this.Title = new JLabel("WHSB Suggestion System");
-		this.Message = new JLabel("Sign in with your Username and Password.");
-		this.Loginbtn = new JButton("Login");
-		
+	    Username = new JTextField("", 15);
+	    Password = new JPasswordField("", 15);
+	    c = new GridBagConstraints();
+	    UTitle = new JLabel("Username:");
+	    PTitle = new JLabel("Password:");
+	    Title = new JLabel("WHSB Suggestion System");
+	    Message = new JLabel("Sign in with your Username and Password.");
+	    Loginbtn = new JButton("Login");
 	}
 	
 	/*
-	* Displays all the components to the JFrame
+	* Displays all the components in the JFrame
 	*
 	* @param frame The JFrame from MainClass
 	*/

@@ -35,6 +35,7 @@ public class MainClass{
 		
 		display(frame);
 	}
+	
 	/*
 	* @param The JFrame from the initialiser
 	*

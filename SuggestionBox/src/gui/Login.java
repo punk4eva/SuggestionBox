@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 * 
 * This is the login page
 */
-public class Login {
+public class Login{
 	
 	JTextField Username;
 	JPasswordField Password;

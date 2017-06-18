@@ -24,7 +24,7 @@ public class User{
     protected int userNum;
     protected Status statMessage = Status.OK;
     protected String description = "";
-    protected ArrayList<Integer> suggestionsList;
+    //protected ArrayList<Integer> suggestionsList; TOO COMPLICATED
     
     protected enum Status{
         HAPPY, OK, SAD, STRESSED, BORED, ANGRY
@@ -36,16 +36,14 @@ public class User{
     /**
      * @param num The address of the user.
      * @param un The user's username.
-     * @param pw The user's password.
+     * @param hashedpw The user's hashed password.
      * @param email The user's email.
      * @param desc the user's description.
      */
-    public User(int num, String un, String pw, String email, String desc){
+    public User(int num, String un, String hashedpw, String email, String desc){
         userNum = num;
         username = un;
-        try {
-            hashedPassword = PasswordHolder.hash(pw);
-        }catch(UnsupportedEncodingException | NoSuchAlgorithmException ignore){}
+        hashedPassword = hashedpw;
         emailAddress = email;
         description = desc;
     }
@@ -53,15 +51,13 @@ public class User{
     /**
      * @param num The address of the user.
      * @param un The user's username.
-     * @param pw The user's password.
+     * @param hashedpw The user's hashed password.
      * @param email The user's email.
      */
-    public User(int num, String un, String pw, String email){
+    public User(int num, String un, String hashedpw, String email){
         userNum = num;
         username = un;
-        try {
-            hashedPassword = PasswordHolder.hash(pw);
-        }catch(UnsupportedEncodingException | NoSuchAlgorithmException ignore){}
+        hashedPassword = hashedpw;
         emailAddress = email;
     }
     

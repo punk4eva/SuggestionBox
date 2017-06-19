@@ -3,10 +3,12 @@ HOW TO PUSH/PULL FROM GITHUB ON NETBEANS:
 2. To push: Make sure you have pulled the latest version of the code. > Save to the remote branch by Right-clicking > Git > Commit. 
 Then Right-click > Git > Remote > Push.
 
-There are special sections which only you can do labelled @charlie. (Just Ctrl-F '@charlie') If there are pieces of code which you want me to 
-do, put an @adam tag.
+There are special sections which only you can do labelled @charlie. (Just Ctrl-F '@charlie') If there are pieces of code which you want me 
+to do, put an @adam tag.
 
-The actual users are stored in the users.txt file. Always access them through the UserLog class which I have instanciated in your MainClass.
+The actual users are stored in the users.txt file. Always access them through the UserLog class which I have instanciated in your 
+MainClass. For info on how to use the UserLog, read the Javadocs. PS: You can instantly read the Javadoc for a method by selecting it from
+the drop-down menu that arises by typing the method name in Netbeans. PSS: You should never have to use the pull() method.
 
 
 >>>>>>>>Did you install a library called 'javaee-web-api-7.0'? If you did, reinstall it, push, and then delete this message.

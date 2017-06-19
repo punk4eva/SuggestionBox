@@ -18,7 +18,7 @@ public class UserLog{
     
     
     //Variable declaration
-    protected ArrayList<User> userList;
+    protected ArrayList<User> userList = new ArrayList<>();
     protected final File storageFile = new File("users.txt");
     
     //Interface allows lambda expressions to be given as parameters.
@@ -45,7 +45,7 @@ public class UserLog{
      * @param un The username to be checked.
      * @return true if the user exists and false otherwise.
      */
-    protected boolean containsUsername(int start /**Always at 0*/, String un){
+    public boolean containsUsername(int start /**Always at 0*/, String un){
         int uComp = userList.get(start).username.compareTo(un);
         if(uComp==0) return true;
         else if(start == userList.size()-1||uComp<0) return false;
@@ -59,42 +59,38 @@ public class UserLog{
     private void pull(){
         String[] segments = 
                 new ReadWrite(storageFile).read().split("/EndOfEntry");
-        for(String seg : segments){
-            String name = seg.substring(
-                    seg.indexOf("<username>")+10, seg.indexOf("</username>"));
-            String hPass = seg.substring(
-                    seg.indexOf("<pass>")+6, seg.indexOf("</pass>"));
-            String email = seg.substring(
-                    seg.indexOf("<email>")+7, seg.indexOf("</email>"));
-            String desc = seg.substring(
-                    seg.indexOf("<desc>")+7, seg.indexOf("</desc>"));
-            add(new User(name, hPass, email, desc));
+        try{
+            for(String seg : segments){
+                String name = seg.substring(
+                        seg.indexOf("<username>")+10, seg.indexOf("</username>"));
+                String hPass = seg.substring(
+                        seg.indexOf("<pass>")+6, seg.indexOf("</pass>"));
+                String email = seg.substring(
+                        seg.indexOf("<email>")+7, seg.indexOf("</email>"));
+                String desc = seg.substring(
+                        seg.indexOf("<desc>")+6, seg.indexOf("</desc>"));
+                add(new User(name, hPass, email, desc));
+            }
+        }catch(StringIndexOutOfBoundsException e){
+            //The exception is thrown at the end of the for-loop as the last
+            //'/EndOfEntry' tag creates an empty String.
         }
     }
     
     /**
      * Writes user profiles from ArrayList to File.
      */
-    protected void push(){
+    public void push(){
         ReadWrite rw = new ReadWrite(storageFile);
         rw.clear();
         userList.stream().map(u -> {
-            rw.write("<username>"+u.username+"</username>");
-            return u;
-        }).map(u -> {
-            rw.write("<pass>"+u.hashedPassword+"</pass>");
-            return u;
-        }).map(u -> {
-            rw.write("<status>"+u.statMessage.toString()+"</status>");
-            return u;
-        }).map(u -> {
-            rw.write("<desc>"+u.description+"</desc>");
-            return u;
-        }).map(u -> {
-            rw.write("<email>"+u.emailAddress+"</email>");
+            rw.write("<username>"+u.username+"</username><pass>"+
+                    u.hashedPassword+"</pass><status>"+u.statMessage.toString()+
+                    "</status><desc>"+u.description+"</desc><email>"+
+                    u.emailAddress+"</email>");
             return u;
         }).forEach(ignore -> {
-            rw.write("/EndOfEntry\n");
+            rw.write("/EndOfEntry");
         });
     }
     
@@ -113,7 +109,7 @@ public class UserLog{
      * @param pass The password of the user.
      * @param em The user's email.
      */
-    protected void newUser(String un, String pass, String em){
+    public void newUser(String un, String pass, String em){
         try{
             PasswordHolder.sanitise(pass);
             for(User user : userList) if(user.username.equals(un)) throw new

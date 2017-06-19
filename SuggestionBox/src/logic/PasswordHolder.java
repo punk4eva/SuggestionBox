@@ -25,15 +25,19 @@ public class PasswordHolder{
     * @throws PasswordUnsafeException to be caught if password is unsafe.
     */
     protected static void sanitise(String p) throws PasswordUnsafeException{
+        //Lower bound: To make passwords harder to crack.
+        //Upper bound: Because it looks cool and professional.
         if(p.length()<8||p.length()>16) throw new PasswordUnsafeException(
                 "Password must be between 8 and 16 characters in length.");
         String whitelist = "1234567890qwertyuiopasdfghjklzxcvbnm.<>!{}?-_+ ()^@";
         //whitelist can't be any longer to protect against SQL injections.
         String spec = ".<>!{}?-_+ ()^@";
-        boolean containsUpperCase = false, containsNum = false, containsSpec = false;
+        boolean containsUpperCase = false, containsNum = false, 
+                containsSpec = false;
         for(int n=0;n<p.length();n++){
-            if(!whitelist.contains((""+p.charAt(n)).toLowerCase())) throw new PasswordUnsafeException(
-                    "Password contains illegal character: " + p.charAt(n));
+            if(!whitelist.contains((""+p.charAt(n)).toLowerCase())) throw new 
+                PasswordUnsafeException("Password contains illegal character: " 
+                        + p.charAt(n));
             if(!containsUpperCase&&Character.isUpperCase(p.charAt(n)))
                 containsUpperCase = true;
             else if(!containsNum&&Character.isDigit(p.charAt(n)))
@@ -41,9 +45,12 @@ public class PasswordHolder{
             else if(!containsSpec&&spec.contains(""+p.charAt(n)))
                 containsSpec = true;
         }
-        if(!containsSpec||!containsNum||!containsUpperCase)
-            throw new PasswordUnsafeException("Password must contain numbers, "
-                    + "uppercase and special characters.");
+        int points = 0;
+        if(containsUpperCase) points++;
+        if(containsNum) points++;
+        if(containsSpec) points++;
+        if(points<2) throw new PasswordUnsafeException("Password must contain "
+                + "numbers, uppercase and special characters.");
         if(p.contains("DELETE")||p.contains("SELECT")||p.contains("INSERT")||
                 p.contains("ALTER")||p.contains("CREATE")||p.contains("USE")||
                 p.contains("SHOW")) throw new PasswordUnsafeException("Password"

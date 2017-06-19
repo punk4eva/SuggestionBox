@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 public class MainClass{
 
 	public static final int WIDTH = 1024, HEIGHT = WIDTH /12*9;
-	protected UserLog userlog = new UserLog();
+	protected static UserLog userlog = new UserLog();
 	
 	private Login login = new Login();
 	
@@ -36,11 +36,14 @@ public class MainClass{
 		frame.getContentPane().setBackground(new Color(230,240,250));
 	
 		login.display(frame);
+                
+                //always push the userlog at the end or users get deleted.
+                userlog.push();
 	}
 	
 	
 	public static void main(String[] args){
             new MainClass();
-	}
+        }
 
 }

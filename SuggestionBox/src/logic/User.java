@@ -21,7 +21,6 @@ public class User{
     protected String username;
     protected String hashedPassword;
     protected String emailAddress;
-    protected int userNum;
     protected Status statMessage = Status.OK;
     protected String description = "";
     //protected ArrayList<Integer> suggestionsList; TOO COMPLICATED
@@ -34,14 +33,12 @@ public class User{
     //Constructors
 
     /**
-     * @param num The address of the user.
      * @param un The user's username.
      * @param hashedpw The user's hashed password.
      * @param email The user's email.
      * @param desc the user's description.
      */
-    public User(int num, String un, String hashedpw, String email, String desc){
-        userNum = num;
+    public User(String un, String hashedpw, String email, String desc){
         username = un;
         hashedPassword = hashedpw;
         emailAddress = email;
@@ -49,13 +46,11 @@ public class User{
     }
     
     /**
-     * @param num The address of the user.
      * @param un The user's username.
      * @param hashedpw The user's hashed password.
      * @param email The user's email.
      */
-    public User(int num, String un, String hashedpw, String email){
-        userNum = num;
+    public User(String un, String hashedpw, String email){
         username = un;
         hashedPassword = hashedpw;
         emailAddress = email;
@@ -83,8 +78,7 @@ public class User{
      */
     protected void printexd(){
         println();
-        System.out.println("User Number: " + userNum + "\nDescription: " 
-                + description);
+        System.out.println("Description: " + description);
     }
     
     /**

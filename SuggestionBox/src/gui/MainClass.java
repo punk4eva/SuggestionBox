@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import logic.UserLog;
 
 import javax.swing.JFrame;
 
@@ -14,7 +15,7 @@ import javax.swing.JFrame;
 public class MainClass{
 
 	public static final int WIDTH = 1024, HEIGHT = WIDTH /12*9;
-	protected UserLog userlog = new UserLog("users.txt");
+	protected UserLog userlog = new UserLog();
 	
 	private Login login = new Login();
 	
@@ -33,13 +34,13 @@ public class MainClass{
 		frame.setVisible(true);
 		frame.setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(230,240,250));
-		
+	
 		login.display(frame);
 	}
 	
 	
 	public static void main(String[] args){
-		new MainClass();
+            new MainClass();
 	}
 
 }

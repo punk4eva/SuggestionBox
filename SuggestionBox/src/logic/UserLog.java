@@ -1,13 +1,10 @@
 
 package logic;
 
-import exceptions.PasswordNotFoundException;
 import exceptions.PasswordUnsafeException;
 import exceptions.UserAlreadyExistsException;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -57,14 +54,12 @@ public class UserLog{
     
     /**
      * Pulls user profiles from storage.
-     * @unfinished
+     * @potentiallyUnfinishedAlthoughICantFindAnyErrors
      */
-    protected void pull(){
+    private void pull(){
         String[] segments = 
                 new ReadWrite(storageFile).read().split("/EndOfEntry");
         for(String seg : segments){
-            int num = Integer.parseInt(seg.substring(
-                    seg.indexOf("<userNum>")+9, seg.indexOf("</userNum>")));
             String name = seg.substring(
                     seg.indexOf("<username>")+10, seg.indexOf("</username>"));
             String hPass = seg.substring(
@@ -73,7 +68,7 @@ public class UserLog{
                     seg.indexOf("<email>")+7, seg.indexOf("</email>"));
             String desc = seg.substring(
                     seg.indexOf("<desc>")+7, seg.indexOf("</desc>"));
-            add(new User(num, name, hPass, email, desc));
+            add(new User(name, hPass, email, desc));
         }
     }
     
@@ -84,9 +79,6 @@ public class UserLog{
         ReadWrite rw = new ReadWrite(storageFile);
         rw.clear();
         userList.stream().map(u -> {
-            rw.write("<userNum>"+u.userNum+"</userNum>");
-            return u;
-        }).map(u -> {
             rw.write("<username>"+u.username+"</username>");
             return u;
         }).map(u -> {
@@ -126,9 +118,7 @@ public class UserLog{
             PasswordHolder.sanitise(pass);
             for(User user : userList) if(user.username.equals(un)) throw new
                 UserAlreadyExistsException("User " + un + "already exists.");
-            User newUser = new User(-1/**UNFINISHED*/,
-                    un, PasswordHolder.hash(pass), em);
-            add(newUser);
+            add(new User(un, PasswordHolder.hash(pass), em));
         }catch(PasswordUnsafeException | UserAlreadyExistsException ex){
             String errorMessage = ex.getMessage();
             //@charlie display errorMessage and get them to retry.
@@ -136,8 +126,55 @@ public class UserLog{
     }
     
     /**
-     * Next time:
-     * 1. Add displayAll() methods!
+     * Displays all Users in the UserLog where the given expression returns 
+     * true.
+     * @param sort The lambda expression to be evaluated for each user.
      */
+    public void displayAll(Sort sort){
+        userList.stream().filter(user -> sort.select(user)).map(user -> {
+            user.println();
+            return user;
+        }).forEach(ignore -> {
+            System.out.println();
+        });
+    }
+    
+    /**
+     * Displays all Users in userList.
+     */
+    public void displayAll(){
+        userList.stream().map(user -> {
+            user.println();
+            return user;
+        }).forEach(ignore -> {
+            System.out.println();
+        });
+    }
+    
+    /**
+     * Displays all User's extended profiles where the given expression returns 
+     * true.
+     * @param sort The lambda expression to be evaluated.
+     */
+    public void displayAllExd(Sort sort){
+        userList.stream().filter(user -> sort.select(user)).map(user -> {
+            user.printexd();
+            return user;
+        }).forEach(ignore -> {
+            System.out.println();
+        });
+    }
+    
+    /**
+     * Displays all User's extended profiles.
+     */
+    public void displayAllExd(){
+        userList.stream().map(user -> {
+            user.printexd();
+            return user;
+        }).forEach(ignore -> {
+            System.out.println();
+        });
+    }
     
 }

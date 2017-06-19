@@ -137,7 +137,7 @@ public class UserLog{
     
     /**
      * Next time:
-     * 1. Add displayAll() methods.
+     * 1. Add displayAll() methods!
      */
     
 }

@@ -33,17 +33,9 @@ public class MainClass{
 		frame.setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(230,240,250));
 		
-		display(frame);
-	}
-	
-	/*
-	* @param The JFrame from the initialiser
-	*
-	* This will choose what to display and display it
-	*/
-	public void display(JFrame frame){
 		login.display(frame);
 	}
+	
 	
 	public static void main(String[] args){
 		new MainClass();

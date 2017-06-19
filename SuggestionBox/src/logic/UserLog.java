@@ -115,7 +115,12 @@ public class UserLog{
     }
     
     //UNFINISHED
-    /***/
+    /**
+     * Adds a new user to the userList.
+     * @param un The username of the user.
+     * @param pass The password of the user.
+     * @param em The user's email.
+     */
     protected void newUser(String un, String pass, String em){
         try{
             PasswordHolder.sanitise(pass);
@@ -132,8 +137,7 @@ public class UserLog{
     
     /**
      * Next time:
-     * 1. Add newUser javadoc.
-     * 2. Add displayAll() methods.
+     * 1. Add displayAll() methods.
      */
     
 }

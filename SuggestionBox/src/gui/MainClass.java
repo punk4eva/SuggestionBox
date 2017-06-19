@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 public class MainClass{
 
 	public static final int WIDTH = 1024, HEIGHT = WIDTH /12*9;
+	protected UserLog userlog = new UserLog("users.txt");
 	
 	private Login login = new Login();
 	

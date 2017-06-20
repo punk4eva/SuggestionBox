@@ -1,0 +1,4 @@
+<Real Name Policy>1. Always use your real name as your username.2. Usernames should be appropriately capitalised.3. Don't log on to anyone else's account and report them for having an insecure account if you think that their password has been compromised.</Real Name Policy>
+<Behaviour Policy>1. Be nice and respectful to everyone.2. Suggestions should not be offensive.3. No profanities.</Behaviour Policy>
+<Appropriate Suggestions Policy>1. Suggestions should be relevant and plausible.2. Suggestions should be well-structured.3. Suggestions should be in English so that everyone can read them.</Appropriate Suggestions Policy>
+<Image Sharing Policy>1. If images are to be used, use a link to dropbox.</Image Sharing Policy>

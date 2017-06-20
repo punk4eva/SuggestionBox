@@ -1,0 +1,85 @@
+package gui;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import logic.UserLog;
+
+import javax.swing.JFrame;
+
+/*
+* @author Charlie Hands
+*
+* This is the main class that sets the JFrame and will run any different pages
+*/
+public class MainClass implements ActionListener{
+
+    public static final int WIDTH = 1024, HEIGHT = WIDTH / 12 * 9;
+    protected static UserLog userlog = new UserLog();
+
+    protected JFrame frame; //Variables don't get edited in methods, only fields.
+    private static Login login;
+    private static SignUp signup;
+
+    /*
+     * Initialises the frame.
+     */
+    public MainClass(){
+        frame = new JFrame("WHSB Suggestion System");
+        getBare(frame);
+        
+        login = new Login(this);
+        signup = new SignUp(this);
+        
+        login.display(frame);
+        
+        //always push the userlog at the end or users get deleted.
+        userlog.push();
+    }
+    
+    /**
+     * Provides a bare JFrame.
+     * @param frame The frame.
+     */
+    protected static void getBare(JFrame frame){
+        clear(frame);
+        frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
+        frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(true);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setLayout(new GridBagLayout());
+        frame.getContentPane().setBackground(new Color(230, 240, 250));
+    }
+    
+    /**
+     * Obvious
+     * @param frame The frame to be cleared.
+     */
+    protected static void clear(JFrame frame){
+        frame.getContentPane().removeAll();
+        //frame.revalidate();
+        //frame.repaint();
+    }
+
+    public static void main(String[] args) {
+        new MainClass();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+        System.out.println("ACTION");
+        if(e.getSource() == login.Loginbtn){
+            //PasswordHolder.passwordValidation(Username.getText(), Password.getText(), userList);
+        }
+        else if(e.getSource() == login.Signupbtn){
+            signup.display(frame);
+            System.out.println("Checkpoint");
+        }
+    }
+    
+}

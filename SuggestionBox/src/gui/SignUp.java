@@ -19,7 +19,7 @@ public class SignUp implements ActionListener{
     }
     
     public void display(JFrame frame){
-    
+        frame = MainClass.getBare();
     }
 
     @Override

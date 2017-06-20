@@ -51,9 +51,9 @@ public class Login implements ActionListener {
      * 
      * @param frame The JFrame from MainClass
      */
-    public void display(JFrame frame) {
+    public void display(MainClass main){
 
-        frame = MainClass.getBare();
+        main.frame = MainClass.getBare();
         /** The way you make the individual pages is quite different. Usually
          * one extends a JPanel or something. I made a quick untested solution
          * to your bug by clearing the JFrame each new page, only 50% chance of
@@ -81,36 +81,36 @@ public class Login implements ActionListener {
         c.weightx = 0.0;
         c.gridx = 1;
         c.gridy = 3;
-        frame.add(Username, c);
+        main.frame.add(Username, c);
 
         c.gridx = 0;
-        frame.add(UTitle, c);
+        main.frame.add(UTitle, c);
 
         c.gridheight = 2;
         c.gridx = 1;
         c.gridy = 6;
-        frame.add(Password, c);
+        main.frame.add(Password, c);
 
         c.gridx = 0;
-        frame.add(PTitle, c);
+        main.frame.add(PTitle, c);
 
         c.ipady = 0;
         c.gridheight = 1;
         c.gridy = 0;
         c.gridx = 1;
         c.anchor = GridBagConstraints.LINE_START;
-        frame.add(Title, c);
+        main.frame.add(Title, c);
 
         c.gridy = 2;
-        frame.add(Message, c);
+        main.frame.add(Message, c);
 
         c.gridy = 8;
         c.anchor = GridBagConstraints.SOUTH;
-        frame.add(Loginbtn, c);
+        main.frame.add(Loginbtn, c);
 
         c.gridx = 1;
         c.anchor = GridBagConstraints.SOUTHEAST;
-        frame.add(Signupbtn, c);
+        main.frame.add(Signupbtn, c);
     }
 
    

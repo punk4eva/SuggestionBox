@@ -17,15 +17,16 @@ public class MainClass{
     public static final int WIDTH = 1024, HEIGHT = WIDTH / 12 * 9;
     protected static UserLog userlog = new UserLog();
 
+    protected JFrame frame; //Variables don't get edited in methods, only fields.
     private Login login = new Login();
 
     /*
      * Initialises the frame.
      */
     public MainClass(){
-        JFrame frame = getBare();
+        frame = getBare();
 
-        login.display(frame);
+        login.display(this);
 
         //always push the userlog at the end or users get deleted.
         userlog.push();

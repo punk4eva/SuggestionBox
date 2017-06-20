@@ -1,1 +1,2 @@
-<username>Adam Whittaker</username><pass>a9a78ea4574a18e387349f9ba0b08f67b451fc836c877432764614375c914be4</pass><status>HAPPY</status><desc>Co-creator of this project.</desc><email>adam271828@gmail.com</email>/EndOfEntry
+<username>Adam Whittaker</username><pass>a9a78ea4574a18e387349f9ba0b08f67b451fc836c877432764614375c914be4</pass><status>OK</status><desc>Co-creator of this project.</desc><email>adam271828@gmail.com</email>
+/EndOfEntry

@@ -18,7 +18,7 @@ public class MainClass{
     protected static UserLog userlog = new UserLog();
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
-    private Login login = new Login();
+    private Login login = new Login(this);
 
     /*
      * Initialises the frame.
@@ -26,7 +26,7 @@ public class MainClass{
     public MainClass(){
         frame = getBare();
 
-        login.display(this);
+        login.display();
 
         //always push the userlog at the end or users get deleted.
         userlog.push();

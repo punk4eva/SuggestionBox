@@ -30,11 +30,14 @@ public class Login implements ActionListener {
     JLabel Message;
     JButton Loginbtn;
     JButton Signupbtn;
+    MainClass main;
+    
+    SignUp signup;
 
     /*
      * Initialises all the components
      */
-    public Login() {
+    public Login(MainClass main) {
         Username = new JTextField("", 15);
         Password = new JPasswordField("", 15);
         c = new GridBagConstraints();
@@ -44,6 +47,8 @@ public class Login implements ActionListener {
         Message = new JLabel("Sign in with your Username and Password.");
         Loginbtn = new JButton("Login");
         Signupbtn = new JButton("Sign Up");
+        this.main = main;
+        this.signup = new SignUp(main);
     }
 
     /*
@@ -51,7 +56,7 @@ public class Login implements ActionListener {
      * 
      * @param frame The JFrame from MainClass
      */
-    public void display(MainClass main){
+    public void display(){
 
         main.frame = MainClass.getBare();
         /** The way you make the individual pages is quite different. Usually
@@ -121,6 +126,7 @@ public class Login implements ActionListener {
         }
         else if(e.getSource() == Signupbtn){
             //Go to different Sign Up page
+            signup.display();
         }
     }
 	

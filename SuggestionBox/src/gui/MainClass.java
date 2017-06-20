@@ -14,36 +14,44 @@ import javax.swing.JFrame;
 */
 public class MainClass{
 
-	public static final int WIDTH = 1024, HEIGHT = WIDTH /12*9;
-	protected static UserLog userlog = new UserLog();
-	
-	private Login login = new Login();
-	
-	/*
-	* Initialises the frame.
-	*/
-	public MainClass(){
-		JFrame frame = new JFrame("WHSB Suggestion System");
-		
-		frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
-		frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(true);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		frame.setLayout(new GridBagLayout());
-		frame.getContentPane().setBackground(new Color(230,240,250));
-	
-		login.display(frame);
-                
-                //always push the userlog at the end or users get deleted.
-                userlog.push();
-	}
-	
-	
-	public static void main(String[] args){
-            new MainClass();
-        }
+    public static final int WIDTH = 1024, HEIGHT = WIDTH / 12 * 9;
+    protected static UserLog userlog = new UserLog();
+
+    private Login login = new Login();
+
+    /*
+     * Initialises the frame.
+     */
+    public MainClass(){
+        JFrame frame = getBare();
+
+        login.display(frame);
+
+        //always push the userlog at the end or users get deleted.
+        userlog.push();
+    }
+    
+    /**
+     * Provides a bare JFrame.
+     * @return The bare necessities of a JFrame.
+     */
+    protected static JFrame getBare(){
+        JFrame frame = new JFrame("WHSB Suggestion System");
+
+        frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
+        frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(true);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setLayout(new GridBagLayout());
+        frame.getContentPane().setBackground(new Color(230, 240, 250));
+        return frame;
+    }
+
+    public static void main(String[] args) {
+        new MainClass();
+    }
 
 }

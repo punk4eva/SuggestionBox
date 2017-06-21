@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 */
 public class MainClass implements ActionListener{
 
-    public static final int WIDTH = 1369/**1024*/, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 1280, HEIGHT = WIDTH / 5 * 4; //Full screen on school computer.
     protected static UserLog userlog = new UserLog();
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
@@ -28,6 +28,7 @@ public class MainClass implements ActionListener{
      */
     public MainClass(){
         frame = new JFrame("WHSB Suggestion System");
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); //newly added. Makes full screen.
         getBare(frame);
         
         login = new Login(this);
@@ -40,7 +41,7 @@ public class MainClass implements ActionListener{
     }
     
     /**
-     * Provides a bare JFrame.
+     * Provides a bare JFrame. May be optimisable.
      * @param frame The frame.
      */
     protected static void getBare(JFrame frame){

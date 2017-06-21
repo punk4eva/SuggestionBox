@@ -82,16 +82,21 @@ public class MainClass implements ActionListener{
         switch(e.getActionCommand()){
             case "Login":
                 try{
-                    PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userList);
+                    PasswordHolder.passwordValidation(login.Username.getText(),
+                            login.Password.getText(), userlog.userList);
+                    //Don't worry about how getText() is deprecated as it had
+                    //security issues that aren't applicable to us.
                 }catch(PasswordNotFoundException ex){
-                    JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, ex.getMessage(), 
+                            "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case "Sign Up":
                 if(e.getSource()==login.Signupbtn){
                     signup.display(frame);
                 }else{
-                
+                    userlog.newUser(signup.Username.getText(), 
+                            signup.Password.getText(), signup.Email.getText());
                 }
                 break;
         }

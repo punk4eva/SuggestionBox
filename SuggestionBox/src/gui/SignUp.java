@@ -20,10 +20,12 @@ public class SignUp{
     
     JTextField Username;
     JPasswordField Password;
+    JTextField Email;
     GridBagConstraints c;
     JLabel UTitle;
     JLabel PTitle;
     JLabel Title;
+    JLabel ETitle;
     JLabel Message;
     JButton Signupbtn;
     
@@ -33,6 +35,7 @@ public class SignUp{
         c = new GridBagConstraints();
         UTitle = new JLabel("Username:");
         PTitle = new JLabel("Password:");
+        ETitle = new JLabel("Email:");
         Title = new JLabel("WHSB Suggestion System");
         Message = new JLabel("Sign in with your Username and Password.");
         Signupbtn = new JButton("Sign Up");
@@ -46,11 +49,13 @@ public class SignUp{
         Font font = new Font("Arial", 10, 30);
         Font titleFont = new Font("Arial", 200, 50);
         Font btnfont = new Font("Arial", 10, 15);
+        Font emlfont = new Font("Chiller", 200, 50);
 
         Username.setFont(font);
         Password.setFont(font);
         UTitle.setFont(font);
         PTitle.setFont(font);
+        ETitle.setFont(emlfont);
         Title.setFont(titleFont);
         Message.setFont(font);
         Signupbtn.setFont(btnfont);
@@ -71,7 +76,16 @@ public class SignUp{
 
         c.gridx = 0;
         frame.add(PTitle, c);
+        
+        /**@charlie
+        c.gridx = 1;
+        c.gridy = 6;
+        frame.add(Email, c);
 
+        c.gridx = 0;
+        frame.add(ETitle, c);
+        */
+ 
         c.ipady = 0;
         c.gridheight = 1;
         c.gridy = 0;

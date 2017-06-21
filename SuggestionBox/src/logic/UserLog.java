@@ -18,8 +18,8 @@ public class UserLog{
     
     
     //Variable declaration
-    protected ArrayList<User> userList = new ArrayList<>();
-    protected final File storageFile = new File("users.txt");
+    public ArrayList<User> userList = new ArrayList<>();
+    private final File storageFile = new File("users.txt");
     
     //Interface allows lambda expressions to be given as parameters.
     protected interface Sort{

@@ -83,7 +83,7 @@ public class PasswordHolder{
      * @throws exceptions.PasswordNotFoundException If the user doesn't exist or
      * the password is incorrect.
      */
-    protected static void passwordValidation(String usr, String password,
+    public static void passwordValidation(String usr, String password,
             ArrayList<User> userlst) throws PasswordNotFoundException{
         boolean unchecked = true;
         for(User user : userlst) if(usr.equals(user.username)){

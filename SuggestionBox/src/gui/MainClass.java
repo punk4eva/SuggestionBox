@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 */
 public class MainClass implements ActionListener{
 
-    public static final int WIDTH = 1024, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 1369/**1024*/, HEIGHT = WIDTH / 12 * 9;
     protected static UserLog userlog = new UserLog();
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
@@ -57,24 +57,24 @@ public class MainClass implements ActionListener{
     }
     
     /**
-     * Obvious
+     * Clears the frame.
      * @param frame The frame to be cleared.
      */
     protected static void clear(JFrame frame){
         frame.getContentPane().removeAll();
-        //frame.revalidate();
-        //frame.repaint();
     }
 
     public static void main(String[] args) {
         new MainClass();
     }
 
+    //If you have multiple ActionListeners, more memory is taken up, but if you have one that loops through all of them, it is still
+    //faster because less mem. is used. SOURCE: Sims + Rahman.
     @Override
     public void actionPerformed(ActionEvent e){
         System.out.println("ACTION");
         if(e.getSource() == login.Loginbtn){
-            //PasswordHolder.passwordValidation(Username.getText(), Password.getText(), userList);
+            
         }
         else if(e.getSource() == login.Signupbtn){
             signup.display(frame);

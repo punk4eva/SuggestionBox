@@ -79,7 +79,16 @@ public class MainClass implements ActionListener{
     //Also a switch will be 25% faster as they work with primatives the compiler will recognise them and optimize.
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == login.Loginbtn){
+        switch(e.getSource()){
+            case login.Loginbtn:try{
+                                    PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
+                                }catch(PasswordNotFoundException e){
+                                    JOptionPane.showMessageDialogue(null, e.getMessage(),"Error!",JOptionPane.ERROR_MESSAGE);
+                                }
+            case login.Signupbtn: signup.display(frame);
+            }
+        
+        /*if(e.getSource() == login.Loginbtn){
             try{
                 PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
             }catch(PasswordNotFoundException e){
@@ -89,7 +98,7 @@ public class MainClass implements ActionListener{
         }
         else if(e.getSource() == login.Signupbtn){
             signup.display(frame);
-        }
+        }*/
     
     }
     

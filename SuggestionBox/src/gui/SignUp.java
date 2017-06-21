@@ -81,10 +81,12 @@ public class SignUp{
 
         c.gridy = 2;
         frame.add(Message, c);
-
+        
+        c.gridy = 8;
         c.gridx = 1;
         c.anchor = GridBagConstraints.SOUTH;
         frame.add(Signupbtn, c);
+        
         frame.revalidate();
         frame.repaint();
     }

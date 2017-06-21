@@ -5,9 +5,14 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import logic.UserLog;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import logic.PasswordHolder;
+import logic.UserLog;
+
+import exceptions.PasswordNotFoundException;
 
 /*
 * @author Charlie Hands
@@ -16,7 +21,7 @@ import javax.swing.JFrame;
 */
 public class MainClass implements ActionListener{
 
-    public static final int WIDTH = 1024, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 1280, HEIGHT = WIDTH / 5 * 4; //Full screen on school computer.
     protected static UserLog userlog = new UserLog();
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
@@ -28,6 +33,7 @@ public class MainClass implements ActionListener{
      */
     public MainClass(){
         frame = new JFrame("WHSB Suggestion System");
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); //newly added. Makes full screen.
         getBare(frame);
         
         login = new Login(this);
@@ -40,7 +46,7 @@ public class MainClass implements ActionListener{
     }
     
     /**
-     * Provides a bare JFrame.
+     * Provides a bare JFrame. May be optimisable.
      * @param frame The frame.
      */
     protected static void getBare(JFrame frame){
@@ -57,29 +63,43 @@ public class MainClass implements ActionListener{
     }
     
     /**
-     * Obvious
+     * Clears the frame.
      * @param frame The frame to be cleared.
      */
     protected static void clear(JFrame frame){
         frame.getContentPane().removeAll();
-        //frame.revalidate();
-        //frame.repaint();
     }
 
     public static void main(String[] args) {
         new MainClass();
     }
 
+    //If you have multiple ActionListeners, more memory is taken up, but if you have one that loops through all of them, it is still
+    //faster because less mem. is used. SOURCE: Sims + Rahman.
+    //Also a switch will be 25% faster as they work with primatives the compiler will recognise them and optimize.
     @Override
     public void actionPerformed(ActionEvent e){
-        System.out.println("ACTION");
-        if(e.getSource() == login.Loginbtn){
-            //PasswordHolder.passwordValidation(Username.getText(), Password.getText(), userList);
+        switch(e.getSource()){
+            case login.Loginbtn:try{
+                                    PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
+                                }catch(PasswordNotFoundException e){
+                                    JOptionPane.showMessageDialogue(null, e.getMessage(),"Error!",JOptionPane.ERROR_MESSAGE);
+                                }
+            case login.Signupbtn: signup.display(frame);
+            }
+        
+        /*if(e.getSource() == login.Loginbtn){
+            try{
+                PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
+            }catch(PasswordNotFoundException e){
+                JOptionPane.showMessageDialogue(null, e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
         else if(e.getSource() == login.Signupbtn){
             signup.display(frame);
-            System.out.println("Checkpoint");
-        }
+        }*/
+    
     }
     
 }

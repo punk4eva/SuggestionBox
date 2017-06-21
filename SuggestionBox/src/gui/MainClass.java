@@ -79,27 +79,22 @@ public class MainClass implements ActionListener{
     //Also a switch will be 25% faster as they work with primatives the compiler will recognise them and optimize.
     @Override
     public void actionPerformed(ActionEvent e){
-        switch(e.getSource()){
-            case login.Loginbtn:try{
-                                    PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
-                                }catch(PasswordNotFoundException e){
-                                    JOptionPane.showMessageDialogue(null, e.getMessage(),"Error!",JOptionPane.ERROR_MESSAGE);
-                                }
-            case login.Signupbtn: signup.display(frame);
-            }
-        
-        /*if(e.getSource() == login.Loginbtn){
-            try{
-                PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
-            }catch(PasswordNotFoundException e){
-                JOptionPane.showMessageDialogue(null, e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-            }
-            
+        switch(e.getActionCommand()){
+            case "Login":
+                try{
+                    PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userList);
+                }catch(PasswordNotFoundException ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Sign Up":
+                if(e.getSource()==login.Signupbtn){
+                    signup.display(frame);
+                }else{
+                
+                }
+                break;
         }
-        else if(e.getSource() == login.Signupbtn){
-            signup.display(frame);
-        }*/
-    
     }
     
 }

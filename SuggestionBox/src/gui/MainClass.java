@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import logic.PasswordHolder;
 import logic.UserLog;
+import logic.SuggestionLog;
 
 import exceptions.PasswordNotFoundException;
 
@@ -21,14 +22,16 @@ import exceptions.PasswordNotFoundException;
 */
 public class MainClass implements ActionListener{
 
-    public static final int WIDTH = 1280, HEIGHT = WIDTH / 5 * 4; //Full screen on school computer.
+    //Full screen on school computer.
+    public static final int WIDTH = 1280, HEIGHT = WIDTH / 5 * 4;
     protected static UserLog userlog = new UserLog();
+    protected static SuggestionLog suglog = new SuggestionLog();
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
     private static Login login;
     private static SignUp signup;
 
-    /*
+    /**
      * Initialises the frame.
      */
     public MainClass(){
@@ -41,12 +44,13 @@ public class MainClass implements ActionListener{
         
         login.display(frame);
         
-        //always push the userlog at the end or users get deleted.
+        //always push the userlog and suglog at the end or users get deleted.
         userlog.push();
+        suglog.push();
     }
     
     /**
-     * Provides a bare JFrame. May be optimisable.
+     * Provides a bare JFrame. May be optimizable.
      * @param frame The frame.
      */
     protected static void getBare(JFrame frame){
@@ -74,9 +78,10 @@ public class MainClass implements ActionListener{
         new MainClass();
     }
 
-    //If you have multiple ActionListeners, more memory is taken up, but if you have one that loops through all of them, it is still
-    //faster because less mem. is used. SOURCE: Sims + Rahman.
-    //Also a switch will be 25% faster as they work with primatives the compiler will recognise them and optimize.
+    //If you have multiple ActionListeners, more memory is taken up, but if you 
+    //have one that loops through all of them, it is still faster because less 
+    //mem. is used. SOURCE: Sims + Rahman. Also a switch will be 25% faster as 
+    //they work with primatives the compiler will recognise them and optimize.
     @Override
     public void actionPerformed(ActionEvent e){
         switch(e.getActionCommand()){

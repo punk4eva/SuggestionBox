@@ -69,7 +69,11 @@ public class UserLog{
                         seg.indexOf("<email>")+7, seg.indexOf("</email>"));
                 String desc = seg.substring(
                         seg.indexOf("<desc>")+6, seg.indexOf("</desc>"));
-                add(new User(name, hPass, email, desc));
+                String stat = seg.substring(
+                        seg.indexOf("<status>")+8, seg.indexOf("</status>"));
+                User user = new User(name, hPass, email, desc);
+                user.changeStatus(stat);
+                add(user);
             }
         }catch(StringIndexOutOfBoundsException e){
             //The exception is thrown at the end of the for-loop as the last

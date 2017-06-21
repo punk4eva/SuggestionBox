@@ -2,9 +2,12 @@
 package logic;
 
 import exceptions.PasswordUnsafeException;
+import exceptions.UnsanitaryEntryException;
 import exceptions.UserAlreadyExistsException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -118,8 +121,10 @@ public class UserLog{
             PasswordHolder.sanitise(pass);
             for(User user : userList) if(user.username.equals(un)) throw new
                 UserAlreadyExistsException("User " + un + "already exists.");
+            Sanitiser.sanitiseUser(un+pass+em);
             add(new User(un, PasswordHolder.hash(pass), em));
-        }catch(PasswordUnsafeException | UserAlreadyExistsException ex){
+        }catch(PasswordUnsafeException | UserAlreadyExistsException |
+                UnsanitaryEntryException ex){
             String errorMessage = ex.getMessage();
             //@charlie display errorMessage and get them to retry.
         }

@@ -1,6 +1,7 @@
 
 package logic;
 
+import exceptions.UnsanitaryEntryException;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -52,7 +53,7 @@ public class SuggestionLog{
                         seg.indexOf("<votes>")+7, seg.indexOf("</votes>")));
                 add(new Suggestion(sugg, auth, votes));
             }
-        }catch(StringIndexOutOfBoundsException e){
+        }catch(StringIndexOutOfBoundsException | UnsanitaryEntryException e){
             //The exception is thrown at the end of the for-loop as the last
             //'/EndOfEntry' tag creates an empty String.
         }
@@ -77,8 +78,10 @@ public class SuggestionLog{
     /**
      * Adds the given Suggestion to the suggestionList.
      * @param sug The suggestion to be added.
+     * @throws exceptions.UnsanitaryEntryException If input could be dangerous.
      */
-    protected void add(Suggestion sug){
+    protected void add(Suggestion sug) throws UnsanitaryEntryException{
+        Sanitiser.sanitiseSuggestion(sug.suggestion);
         suggestionList.add(sug);
     }
     

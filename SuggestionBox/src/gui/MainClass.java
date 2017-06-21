@@ -70,16 +70,16 @@ public class MainClass implements ActionListener{
 
     //If you have multiple ActionListeners, more memory is taken up, but if you have one that loops through all of them, it is still
     //faster because less mem. is used. SOURCE: Sims + Rahman.
+    //Also a switch will be 25% faster as they work with primatives the compiler will recognise them and optimize.
     @Override
     public void actionPerformed(ActionEvent e){
-        System.out.println("ACTION");
         if(e.getSource() == login.Loginbtn){
             
         }
         else if(e.getSource() == login.Signupbtn){
             signup.display(frame);
-            System.out.println("Checkpoint");
         }
+    
     }
     
 }

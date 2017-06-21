@@ -5,9 +5,14 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import logic.UserLog;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import logic.PasswordHolder;
+import logic.UserLog;
+
+import exceptions.PasswordNotFoundException;
 
 /*
 * @author Charlie Hands
@@ -75,6 +80,11 @@ public class MainClass implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == login.Loginbtn){
+            try{
+                PasswordHolder.passwordValidation(login.Username.getText(),login.Password.getText(), userlog.userlist);
+            }catch(PasswordNotFoundException e){
+                JOptionPane.showMessageDialogue(null, e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+            }
             
         }
         else if(e.getSource() == login.Signupbtn){

@@ -44,7 +44,11 @@ public class SignUp{
     
     public void display(JFrame frame){
         
-        MainClass.getBare(frame);
+        Color textCol = MainClass.getBare(frame);
+        UTitle.setColor(textCol);
+        PTitle.setColor(textCol);
+        ETitle.setColor(textCol);
+        Title.setColor(textCol);
         
         Font font = new Font("Arial", 10, 30);
         Font titleFont = new Font("Arial", 200, 50);

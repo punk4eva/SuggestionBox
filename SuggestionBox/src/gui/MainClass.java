@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -26,6 +27,8 @@ public class MainClass implements ActionListener{
     public static final int WIDTH = 1280, HEIGHT = WIDTH / 5 * 4;
     protected static UserLog userlog = new UserLog();
     protected static SuggestionLog suglog = new SuggestionLog();
+    
+    public static Random r = new Random();
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
     private static Login login;
@@ -52,8 +55,9 @@ public class MainClass implements ActionListener{
     /**
      * Provides a bare JFrame. May be optimizable.
      * @param frame The frame.
+     * @return a non-contrast Color Object for text.
      */
-    protected static void getBare(JFrame frame){
+    protected static Color getBare(JFrame frame){
         clear(frame);
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
@@ -63,7 +67,11 @@ public class MainClass implements ActionListener{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setLayout(new GridBagLayout());
-        frame.getContentPane().setBackground(new Color(230, 240, 250));
+        int R = r.nextInt(255);
+        int G = r.nextInt(255); 
+        int B = r.nextInt(255);
+        frame.getContentPane().setBackground(new Color(R, G, B));
+        return new Color((R+127)%256, (G+127)%256, (B+127)%256);
     }
     
     /**

@@ -1,1 +1,2 @@
-<suggestion>This is an example suggestion.</suggestion><author>Adam Whittaker</author><votes>9001</votes>/EndOfEntry
+<suggestion>This is an example suggestion.</suggestion><author>Adam Whittaker</author><votes>9001</votes>
+/EndOfEntry

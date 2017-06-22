@@ -32,6 +32,7 @@ public class SignUp{
     public SignUp(MainClass main){
         Username = new JTextField("", 15);
         Password = new JPasswordField("", 15);
+        Email = new JTextField("",15);
         c = new GridBagConstraints();
         UTitle = new JLabel("Username:");
         PTitle = new JLabel("Password:");
@@ -56,6 +57,7 @@ public class SignUp{
 
         Username.setFont(font);
         Password.setFont(font);
+        Email.setFont(font);
         UTitle.setFont(font);
         PTitle.setFont(font);
         ETitle.setFont(emlfont);
@@ -73,20 +75,21 @@ public class SignUp{
 
         c.gridheight = 2;
         c.gridx = 1;
-        c.gridy = 6;
+        c.gridy = 4;
         frame.add(Password, c);
 
         c.gridx = 0;
         frame.add(PTitle, c);
         
-        /**@charlie
+        /**@charlie*/
+        c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
-        c.gridy = 6;
+        c.gridy = 1;
         frame.add(Email, c);
 
         c.gridx = 0;
         frame.add(ETitle, c);
-        */
+        
  
         c.ipady = 0;
         c.gridheight = 1;

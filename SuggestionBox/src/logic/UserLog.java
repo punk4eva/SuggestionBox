@@ -107,6 +107,7 @@ public class UserLog{
      */
     protected void add(User user){
         userList.add(user);
+        push();
     }
     
     //UNFINISHED
@@ -115,19 +116,20 @@ public class UserLog{
      * @param un The username of the user.
      * @param pass The password of the user.
      * @param em The user's email.
+     * @throws UserAlreadyExistsException if the username already exists, PasswordUnsafeException if the password is unsafe or UnsanitaryEntryException if the entry could corrupt data.
      */
-    public void newUser(String un, String pass, String em){
-        try{
+    public void newUser(String un, String pass, String em) throws UserAlreadyExistsException, PasswordUnsafeException, UnsanitaryEntryException{
+        //try{
             PasswordHolder.sanitise(pass);
             for(User user : userList) if(user.username.equals(un)) throw new
-                UserAlreadyExistsException("User " + un + "already exists.");
+                UserAlreadyExistsException("User " + un + " already exists.");
             Sanitiser.sanitiseUser(un+pass+em);
             add(new User(un, PasswordHolder.hash(pass), em));
-        }catch(PasswordUnsafeException | UserAlreadyExistsException |
-                UnsanitaryEntryException ex){
-            String errorMessage = ex.getMessage();
+        //}catch(PasswordUnsafeException | UserAlreadyExistsException |
+                //UnsanitaryEntryException ex){
+           // String errorMessage = ex.getMessage();
             //@charlie display errorMessage and get them to retry.
-        }
+        //}
     }
     
     /**

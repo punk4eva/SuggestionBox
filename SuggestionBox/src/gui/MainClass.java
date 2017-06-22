@@ -14,7 +14,7 @@ import logic.PasswordHolder;
 import logic.UserLog;
 import logic.SuggestionLog;
 
-import exceptions.PasswordNotFoundException;
+import exceptions.*;
 
 /*
 * @author Charlie Hands
@@ -108,8 +108,13 @@ public class MainClass implements ActionListener{
                 if(e.getSource()==login.Signupbtn){
                     signup.display(frame);
                 }else{
-                    userlog.newUser(signup.Username.getText(), 
-                            signup.Password.getText(), signup.Email.getText());
+                    try{
+                        userlog.newUser(signup.Username.getText(), 
+                        signup.Password.getText(), signup.Email.getText());
+                    }catch(PasswordUnsafeException | UserAlreadyExistsException | UnsanitaryEntryException ex){
+                        JOptionPane.showMessageDialog(frame, ex.getMessage(), 
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 break;
         }

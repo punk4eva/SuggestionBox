@@ -67,11 +67,11 @@ public class MainClass implements ActionListener{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setLayout(new GridBagLayout());
-        int R = r.nextInt(255);
-        int G = r.nextInt(255); 
-        int B = r.nextInt(255);
+        int R = r.nextInt(205)+30;
+        int G = r.nextInt(195)+60; 
+        int B = r.nextInt(135)+120;
         frame.getContentPane().setBackground(new Color(R, G, B));
-        return new Color((R+127)%256, (G+127)%256, (B+127)%256);
+        return new Color(R, (G+127)%256, (B+127)%256);
     }
     
     /**

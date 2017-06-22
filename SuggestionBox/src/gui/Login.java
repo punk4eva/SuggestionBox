@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 
@@ -52,9 +53,10 @@ public class Login{
     public void display(JFrame frame){
         
         Color textCol = MainClass.getBare(frame);
-	UTitle.setColor(textCol);
-	PTitle.setColor(textCol);
-	Title.setColor(textCol);
+	UTitle.setForeground(textCol);
+	PTitle.setForeground(textCol);
+	Title.setForeground(textCol);
+        Message.setForeground(textCol);
         
         Font font = new Font("Arial", 10, 30);
         Font titleFont = new Font("Arial", 200, 50);

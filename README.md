@@ -11,7 +11,7 @@ A class determining the characteristics of users. DONE
 
 A page to edit user profiles.
 
-A sign up page.
+A sign up page. DONE
 
 A way to send emails. ALMOST DONE
 

@@ -26,7 +26,6 @@ public class SignUp{
     JLabel PTitle;
     JLabel Title;
     JLabel ETitle;
-    JLabel Message;
     JButton Signupbtn;
     
     public SignUp(MainClass main){
@@ -36,8 +35,7 @@ public class SignUp{
         UTitle = new JLabel("Username:");
         PTitle = new JLabel("Password:");
         ETitle = new JLabel("Email:");
-        Title = new JLabel("WHSB Suggestion System");
-        Message = new JLabel("Sign in with your Username and Password.");
+        Title = new JLabel("Make an Account");
         Signupbtn = new JButton("Sign Up");
         Signupbtn.addActionListener(main);
     }
@@ -61,7 +59,6 @@ public class SignUp{
         PTitle.setFont(font);
         ETitle.setFont(emlfont);
         Title.setFont(titleFont);
-        Message.setFont(font);
         Signupbtn.setFont(btnfont);
 
         c.ipady = 30;
@@ -96,9 +93,6 @@ public class SignUp{
         c.gridx = 1;
         c.anchor = GridBagConstraints.LINE_START;
         frame.add(Title, c);
-
-        c.gridy = 2;
-        frame.add(Message, c);
         
         c.gridy = 8;
         c.gridx = 1;

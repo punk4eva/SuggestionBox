@@ -40,7 +40,7 @@ public class SignUp{
         ETitle = new JLabel("Email:");
         Title = new JLabel("Make an Account");
         Signupbtn = new JButton("Sign Up");
-        toLogin = new JButton("Login");
+        toLogin = new JButton("<html>Back to<br>Login");
         Signupbtn.addActionListener(main);
         toLogin.addActionListener(main);
     }
@@ -67,6 +67,8 @@ public class SignUp{
         Signupbtn.setFont(btnfont);
         toLogin.setFont(btnfont);
 
+        c.anchor = GridBagConstraints.SOUTH;
+        c.gridheight = 1;
         c.ipady = 30;
         c.weightx = 0.0;
         c.gridx = 1;
@@ -103,8 +105,9 @@ public class SignUp{
         c.anchor = GridBagConstraints.SOUTH;
         frame.add(Signupbtn, c);
         
-        //c.anchor = GridBagConstraints.SOUTHEAST;
-        //frame.add(toLogin, c);
+        c.gridx = 3;
+        c.anchor = GridBagConstraints.SOUTHEAST;
+        frame.add(toLogin, c);
         
         frame.revalidate();
         frame.repaint();

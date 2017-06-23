@@ -2,3 +2,5 @@
 /EndOfEntry
 <username>Charlie Hands</username><pass>73f0f2b5212afcfd71b3218938338812b5a27c5e37d2f817a62b2861446b249b</pass><status>OK</status><desc></desc><email>charlie.h.hands@gmail.com</email>
 /EndOfEntry
+<username>Test</username><pass>99a0b6904a8a1bd9759dac6a21fb6cdbe1182d98616e13a9e42c23d7f917a889</pass><status>OK</status><desc></desc><email>penis@hotmail.com</email>
+/EndOfEntry

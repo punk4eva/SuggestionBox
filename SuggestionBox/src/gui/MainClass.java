@@ -19,7 +19,7 @@ import exceptions.*;
 /**
  * @author Charlie Hands
  *
- * This is the main class that sets the JFrame and will run any different pages
+ * This is the main class that sets the JFrame and will run any different pages.
  */
 public class MainClass implements ActionListener{
 
@@ -36,11 +36,11 @@ public class MainClass implements ActionListener{
     private static Policies policies;
 
     /**
-     * Initialises the frame.
+     * Initializes the frame.
      */
     public MainClass(){
         frame = new JFrame("WHSB Suggestion System");
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); //newly added. Makes full screen.
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         getBare(frame);
         
         login = new Login(this);
@@ -85,7 +85,7 @@ public class MainClass implements ActionListener{
     }
 
     public static void main(String[] args) {
-        new MainClass();
+        MainClass mc = new MainClass();
     }
 
     //If you have multiple ActionListeners, more memory is taken up, but if you 
@@ -100,8 +100,6 @@ public class MainClass implements ActionListener{
                     PasswordHolder.passwordValidation(login.Username.getText(),
                             login.Password.getText(), userlog.userList);
                     policies.display(frame);
-                    //Don't worry about how getText() is deprecated as it had
-                    //security issues that aren't applicable to us.
                 }catch(PasswordNotFoundException ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage(), 
                             "Error", JOptionPane.ERROR_MESSAGE);
@@ -119,6 +117,9 @@ public class MainClass implements ActionListener{
                             "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
+                break;
+            case "<html>Back to<br>Login":
+                login.display(frame);
                 break;
         }
     }

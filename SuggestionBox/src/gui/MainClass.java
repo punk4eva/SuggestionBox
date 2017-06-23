@@ -33,6 +33,7 @@ public class MainClass implements ActionListener{
     protected JFrame frame; //Variables don't get edited in methods, only fields.
     private static Login login;
     private static SignUp signup;
+    private static Policies policies;
 
     /**
      * Initialises the frame.
@@ -97,6 +98,7 @@ public class MainClass implements ActionListener{
                 try{
                     PasswordHolder.passwordValidation(login.Username.getText(),
                             login.Password.getText(), userlog.userList);
+                    policies.display(frame);
                     //Don't worry about how getText() is deprecated as it had
                     //security issues that aren't applicable to us.
                 }catch(PasswordNotFoundException ex){

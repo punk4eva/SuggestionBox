@@ -28,6 +28,7 @@ public class SignUp{
     JLabel Title;
     JLabel ETitle;
     JButton Signupbtn;
+    JButton toLogin;
     
     public SignUp(MainClass main){
         Username = new JTextField("", 15);
@@ -39,7 +40,9 @@ public class SignUp{
         ETitle = new JLabel("Email:");
         Title = new JLabel("Make an Account");
         Signupbtn = new JButton("Sign Up");
+        toLogin = new JButton("Login");
         Signupbtn.addActionListener(main);
+        toLogin.addActionListener(main);
     }
     
     public void display(JFrame frame){
@@ -62,6 +65,7 @@ public class SignUp{
         ETitle.setFont(font);
         Title.setFont(titleFont);
         Signupbtn.setFont(btnfont);
+        toLogin.setFont(btnfont);
 
         c.ipady = 30;
         c.weightx = 0.0;
@@ -95,8 +99,12 @@ public class SignUp{
         
         c.gridy = 8;
         c.gridx = 1;
+        c.gridheight = 5;
         c.anchor = GridBagConstraints.SOUTH;
         frame.add(Signupbtn, c);
+        
+        //c.anchor = GridBagConstraints.SOUTHEAST;
+        //frame.add(toLogin, c);
         
         frame.revalidate();
         frame.repaint();

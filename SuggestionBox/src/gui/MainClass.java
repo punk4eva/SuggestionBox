@@ -45,6 +45,7 @@ public class MainClass implements ActionListener{
         
         login = new Login(this);
         signup = new SignUp(this);
+        policies = new Policies(this);
         
         login.display(frame);
         

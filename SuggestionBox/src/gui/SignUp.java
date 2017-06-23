@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  * 
  * Handles the Sign Ups
  * 
- * @Unfinished
+ * 
  */
 public class SignUp{
     
@@ -34,7 +34,7 @@ public class SignUp{
         Password = new JPasswordField("", 15);
         Email = new JTextField("",15);
         c = new GridBagConstraints();
-        UTitle = new JLabel("Username:");
+        UTitle = new JLabel("Name:");
         PTitle = new JLabel("Password:");
         ETitle = new JLabel("Email:");
         Title = new JLabel("Make an Account");
@@ -50,17 +50,16 @@ public class SignUp{
         ETitle.setForeground(textCol);
         Title.setForeground(textCol);
         
-        Font font = new Font("Arial", 10, 30);
         Font titleFont = new Font("Arial", 200, 50);
         Font btnfont = new Font("Arial", 10, 15);
-        Font emlfont = new Font("Chiller", 200, 50);
+        Font font = new Font("Chiller", 200, 50);
 
         Username.setFont(font);
         Password.setFont(font);
         Email.setFont(font);
         UTitle.setFont(font);
         PTitle.setFont(font);
-        ETitle.setFont(emlfont);
+        ETitle.setFont(font);
         Title.setFont(titleFont);
         Signupbtn.setFont(btnfont);
 
@@ -81,7 +80,6 @@ public class SignUp{
         c.gridx = 0;
         frame.add(PTitle, c);
         
-        /**@charlie*/
         c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
         c.gridy = 1;
@@ -90,12 +88,9 @@ public class SignUp{
         c.gridx = 0;
         frame.add(ETitle, c);
         
- 
-        c.ipady = 0;
-        c.gridheight = 1;
         c.gridy = 0;
         c.gridx = 1;
-        c.anchor = GridBagConstraints.LINE_START;
+        c.anchor = GridBagConstraints.NORTH;
         frame.add(Title, c);
         
         c.gridy = 8;

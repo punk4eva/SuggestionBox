@@ -35,7 +35,7 @@ public class Login{
         Username = new JTextField("", 15);
         Password = new JPasswordField("", 15);
         c = new GridBagConstraints();
-        UTitle = new JLabel("Username:");
+        UTitle = new JLabel("Name:");
         PTitle = new JLabel("Password:");
         Title = new JLabel("WHSB Suggestion System");
         Message = new JLabel("Sign in with your Username and Password.");

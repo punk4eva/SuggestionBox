@@ -16,11 +16,11 @@ import logic.SuggestionLog;
 
 import exceptions.*;
 
-/*
-* @author Charlie Hands
-*
-* This is the main class that sets the JFrame and will run any different pages
-*/
+/**
+ * @author Charlie Hands
+ *
+ * This is the main class that sets the JFrame and will run any different pages
+ */
 public class MainClass implements ActionListener{
 
     //Full screen on school computer.

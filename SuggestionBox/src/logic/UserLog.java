@@ -6,8 +6,6 @@ import exceptions.UnsanitaryEntryException;
 import exceptions.UserAlreadyExistsException;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -117,6 +115,8 @@ public class UserLog{
      * @param pass The password of the user.
      * @param em The user's email.
      * @throws UserAlreadyExistsException if the username already exists, PasswordUnsafeException if the password is unsafe or UnsanitaryEntryException if the entry could corrupt data.
+     * @throws exceptions.PasswordUnsafeException  If the password is easily breakable.
+     * @throws exceptions.UnsanitaryEntryException If the profile contains dangerous text.
      */
     public void newUser(String un, String pass, String em) throws UserAlreadyExistsException, PasswordUnsafeException, UnsanitaryEntryException{
         //try{

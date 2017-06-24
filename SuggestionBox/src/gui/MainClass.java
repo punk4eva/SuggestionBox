@@ -47,8 +47,8 @@ public class MainClass implements ActionListener{
         signup = new SignUp(this);
         policies = new Policies(this);
         
-        //Uncomment the next line to activate testing.
-        //if(true){new TestingPage(this).display(frame);}else
+        //Uncomment the next line to activate testing mode.
+        if(true){new TestingPage(this).display(frame);}else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.

@@ -34,7 +34,7 @@ public class TestingPage{
         disagree.addActionListener(main);
         c = new GridBagConstraints();
         policies = new JScrollPane(new ScrollableImage(new ImageIcon("policies.png"), 1));
-        policies.setPreferredSize(new Dimension(1024, 1280));
+        policies.setPreferredSize(new Dimension(1140, 740));
         policies.setViewportBorder(
                 BorderFactory.createLineBorder(Color.black));
         policies.setVisible(true);

@@ -3,11 +3,11 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import logic.PolicyText;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Policies{
     
     public Policies(MainClass main){
         //We should use a JPanel or something to store both policies and buttons.
-        policies = new JScrollPane(new JLabel(new PolicyText().text));
+        policies = new JScrollPane(new JLabel(new ImageIcon("policies.png")));
         Title = new JLabel("SUGGESTION SYSTEM POLICIES:");
         agree = new JButton("Agree");
         disagree = new JButton("Disagree");

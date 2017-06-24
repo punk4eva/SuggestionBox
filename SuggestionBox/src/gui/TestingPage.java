@@ -1,11 +1,11 @@
 
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,7 +33,11 @@ public class TestingPage{
         agree.addActionListener(main);
         disagree.addActionListener(main);
         c = new GridBagConstraints();
-        panel = getPanel();
+        policies = new JScrollPane(new ScrollableImage(new ImageIcon("policies.png"), 1));
+        policies.setPreferredSize(new Dimension(1024, 1280));
+        policies.setViewportBorder(
+                BorderFactory.createLineBorder(Color.black));
+        policies.setVisible(true);
     }
     
     
@@ -42,9 +46,9 @@ public class TestingPage{
         
         c.gridx = 0;
         c.gridy = 1;
-        JLabel l = new JLabel(new ImageIcon("policies.png"));
-        l.setPreferredSize(new Dimension(1200, 1024));
-        frame.add(l);
+        
+        frame.add(policies);
+        System.out.println("Checkpoint");
         
         frame.revalidate();
         frame.repaint();

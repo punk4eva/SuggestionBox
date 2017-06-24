@@ -25,7 +25,7 @@ public class Policies{
     
     public Policies(MainClass main){
         //We should use a JPanel or something to store both policies and buttons.
-        policies = new JScrollPane(new JLabel(new ImageIcon("policies.png")));
+        //policies = new JScrollPane(new ImageIcon("policies.png"));
         Title = new JLabel("SUGGESTION SYSTEM POLICIES:");
         agree = new JButton("Agree");
         disagree = new JButton("Disagree");

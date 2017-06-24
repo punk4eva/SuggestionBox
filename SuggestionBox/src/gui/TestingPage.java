@@ -53,7 +53,7 @@ public class TestingPage{
         frame.revalidate();
         frame.repaint();
     }
-    
+ 
     private JPanel getPanel(){
         JPanel ret = new JPanel(new GridBagLayout());
         ret.setPreferredSize(new Dimension(2000, 2000));

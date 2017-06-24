@@ -48,7 +48,7 @@ public class MainClass implements ActionListener{
         policies = new Policies(this);
         
         //Uncomment the next line to activate testing mode.
-        if(true){new TestingPage(this).display(frame);}else
+        //if(true){new TestingPage(this).display(frame);}else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.
@@ -122,6 +122,12 @@ public class MainClass implements ActionListener{
                 break;
             case "<html>Back to<br>Login":
                 login.display(frame);
+                break;
+            case "Agree":
+                //Sent to homepage
+                break;
+            case "Disagree":
+                JOptionPane.showConfirmDialog(frame, "If you disagree you will be sent to the login page. Are you sure you want to exit?","Warning!",JOptionPane.YES_NO_OPTION);
                 break;
         }
     }

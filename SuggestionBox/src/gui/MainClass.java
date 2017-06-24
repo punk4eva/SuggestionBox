@@ -47,6 +47,8 @@ public class MainClass implements ActionListener{
         signup = new SignUp(this);
         policies = new Policies(this);
         
+        //Uncomment the next line to activate testing.
+        //if(true){new TestingPage(this).display(frame);}else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.
@@ -65,7 +67,7 @@ public class MainClass implements ActionListener{
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
+        frame.setResizable(true); //This is obsolete if max and min are the same.
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setLayout(new GridBagLayout());

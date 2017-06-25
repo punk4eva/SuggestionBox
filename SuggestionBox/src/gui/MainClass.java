@@ -126,7 +126,15 @@ public class MainClass implements ActionListener{
                 //Sent to homepage
                 break;
             case "Disagree":
-                JOptionPane.showConfirmDialog(frame, "If you disagree you will be sent to the login page. Are you sure you want to exit?","Warning!",JOptionPane.YES_NO_OPTION);
+                switch(JOptionPane.showConfirmDialog(frame, 
+                        "If you disagree, you will be sent to the login page. "
+                                + "Are you sure you want to exit?","Warning!",
+                                JOptionPane.YES_NO_OPTION)){
+                    case 0: //Yes
+                        frame.setLayout(new GridBagLayout());
+                        login.display(frame);
+                        break;
+                }
                 break;
         }
     }

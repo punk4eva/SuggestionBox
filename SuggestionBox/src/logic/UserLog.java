@@ -4,6 +4,7 @@ package logic;
 import exceptions.PasswordUnsafeException;
 import exceptions.UnsanitaryEntryException;
 import exceptions.UserAlreadyExistsException;
+import exceptions.EmailNotEnteredException;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -116,8 +117,10 @@ public class UserLog{
      * @throws exceptions.UserAlreadyExistsException If the username already exists.
      * @throws exceptions.PasswordUnsafeException  If the password is easily breakable.
      * @throws exceptions.UnsanitaryEntryException If the profile contains dangerous text.
+     * @throws exceptions.EmailNotEnteredException If at Email is not entered.
      */
-    public void newUser(String un, String pass, String em) throws UserAlreadyExistsException, PasswordUnsafeException, UnsanitaryEntryException{
+    public void newUser(String un, String pass, String em) throws UserAlreadyExistsException, PasswordUnsafeException, UnsanitaryEntryException, EmailNotEnteredException{
+        if(em.equals("")) throw new EmailNotEnteredException("Please enter your email.");
         PasswordHolder.sanitise(pass);
         for(User user : userList) if(user.username.equals(un)) throw new
             UserAlreadyExistsException("User " + un + " already exists.");

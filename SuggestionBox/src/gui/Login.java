@@ -75,6 +75,7 @@ public class Login{
         c.weightx = 0.0;
         c.gridx = 1;
         c.gridy = 3;
+        c.anchor = GridBagConstraints.CENTER;
         frame.add(Username, c);
 
         c.gridx = 0;
@@ -83,6 +84,7 @@ public class Login{
         c.gridheight = 2;
         c.gridx = 1;
         c.gridy = 6;
+        c.anchor = GridBagConstraints.CENTER;
         frame.add(Password, c);
 
         c.gridx = 0;

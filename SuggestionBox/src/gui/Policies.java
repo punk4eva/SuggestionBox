@@ -1,8 +1,10 @@
 
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
@@ -21,7 +22,6 @@ import javax.swing.JScrollPane;
 public class Policies{
     
     JScrollPane policies;
-    JPanel panel = new JPanel();
     JLabel Title;
     JButton agree;
     JButton disagree;
@@ -34,7 +34,8 @@ public class Policies{
         agree.addActionListener(main);
         disagree.addActionListener(main);
         c = new GridBagConstraints();
-        policies = new JScrollPane(new ScrollableImage(new ImageIcon("policies.png"), 1));
+        policies = new JScrollPane(new ScrollableImage(
+                new ImageIcon("policies.png"), 5));
         policies.setPreferredSize(new Dimension(1140, 740));
         policies.setViewportBorder(
                 BorderFactory.createLineBorder(Color.black));
@@ -48,16 +49,13 @@ public class Policies{
         
         agree.setFont(btnfont);
         disagree.setFont(btnfont);
-        c.gridx = 0;
-        c.gridy = 1;
-        frame.add(policies,c);
         
-        c.gridy = 2;
-        c.anchor = GridBagConstraints.SOUTHWEST;
-        frame.add(agree,c);
-        c.anchor = GridBagConstraints.SOUTHEAST;
-        frame.add(disagree,c);
+        frame.add(policies);
         
+        frame.setLayout(new FlowLayout(FlowLayout.RIGHT, 3, 3));
+        frame.add(agree);
+
+        frame.add(disagree);
         
         frame.revalidate();
         frame.repaint();

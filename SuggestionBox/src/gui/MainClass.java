@@ -40,7 +40,9 @@ public class MainClass implements ActionListener{
      */
     public MainClass(){
         frame = new JFrame("WHSB Suggestion System");
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new GridBagLayout());
         getBare(frame);
         
         login = new Login(this);
@@ -66,11 +68,8 @@ public class MainClass implements ActionListener{
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true); //This is obsolete if max and min are the same.
-        frame.setLocationRelativeTo(null);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
-        frame.setLayout(new GridBagLayout());
         int R = r.nextInt(205)+30;
         int G = r.nextInt(195)+60; 
         int B = r.nextInt(135)+120;

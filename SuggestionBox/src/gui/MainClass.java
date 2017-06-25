@@ -113,7 +113,7 @@ public class MainClass implements ActionListener{
                     try{
                         userlog.newUser(signup.Username.getText(), 
                         signup.Password.getText(), signup.Email.getText());
-                    }catch(PasswordUnsafeException | UserAlreadyExistsException | UnsanitaryEntryException ex){
+                    }catch(PasswordUnsafeException | UserAlreadyExistsException | UnsanitaryEntryException | EmailNotEnteredException ex){
                         JOptionPane.showMessageDialog(frame, ex.getMessage(), 
                             "Error", JOptionPane.ERROR_MESSAGE);
                     }

@@ -15,6 +15,7 @@ import logic.UserLog;
 import logic.SuggestionLog;
 
 import exceptions.*;
+import logic.MailManager;
 
 /**
  * @author Charlie Hands
@@ -85,14 +86,11 @@ public class MainClass implements ActionListener{
         frame.getContentPane().removeAll();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         MainClass mc = new MainClass();
     }
 
-    //If you have multiple ActionListeners, more memory is taken up, but if you 
-    //have one that loops through all of them, it is still faster because less 
-    //mem. is used. SOURCE: Sims + Rahman. Also a switch will be 25% faster as 
-    //they work with primatives the compiler will recognise them and optimize.
+    
     @Override
     public void actionPerformed(ActionEvent e){
         switch(e.getActionCommand()){
@@ -111,9 +109,30 @@ public class MainClass implements ActionListener{
                     signup.display(frame);
                 }else{
                     try{
-                        userlog.newUser(signup.Username.getText(), 
-                        signup.Password.getText(), signup.Email.getText());
-                    }catch(PasswordUnsafeException | UserAlreadyExistsException | UnsanitaryEntryException ex){
+                        String email = signup.Username.getText();
+                        String verCode = PasswordHolder.getCode();
+                        String given = null;
+                        boolean success = false;
+                        while(!success){
+                        while(given==null){
+                            /**MailManager.send("SuggestionBox Verification Code",
+                                "Your verification code is:   " + verCode,
+                                "suggestionbox31@gmail.com",
+                                MailManager.prep(email));*/
+                            given = (String)JOptionPane.showInputDialog(frame,
+                                "What is the verification code that you recieved"
+                                + " in an email?", "Confirm Email",
+                                JOptionPane.QUESTION_MESSAGE, null,
+                                new String[] {"OK", "Resend"}, "OK");
+                        }
+                        if(given.toUpperCase().equals(verCode)){
+                            userlog.newUser(email, signup.Password.getText(), 
+                                signup.Email.getText());
+                            success = true;
+                        }
+                        }
+                    }catch(PasswordUnsafeException | UserAlreadyExistsException 
+                            | UnsanitaryEntryException ex){
                         JOptionPane.showMessageDialog(frame, ex.getMessage(), 
                             "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -130,7 +149,7 @@ public class MainClass implements ActionListener{
             case "Disagree":
                 switch(JOptionPane.showConfirmDialog(frame, 
                         "If you disagree, you will be sent to the login page. "
-                                + "Are you sure you want to exit?","Warning!",
+                                + "Are you sure you want to exit?", "Warning!",
                                 JOptionPane.YES_NO_OPTION)){
                     case 0: //Yes
                         frame.setLayout(new GridBagLayout());

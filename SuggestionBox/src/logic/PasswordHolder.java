@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -16,6 +17,8 @@ import java.util.ArrayList;
  * @untested
  */
 public class PasswordHolder{
+    
+    private static Random r = new Random();
     
     //Methods
     
@@ -95,6 +98,13 @@ public class PasswordHolder{
         }
         if(unchecked) throw new PasswordNotFoundException(
                 "User " + usr + " not found!");
+    }
+    
+    /**
+     * @return A pseudorandom String of uppercases and digits.
+     */
+    public static String getCode(){
+        return hash(Long.toString(r.nextLong())).substring(0, 6).toUpperCase();
     }
 
 }

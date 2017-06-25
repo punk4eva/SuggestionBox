@@ -31,7 +31,7 @@ public class MailManager{
      * removed)
      * @param toAddresses The addresses that the email is being to.
      */
-    protected static void send(String subject, 
+    public static void send(String subject, 
             String message,
             String fromAddress, /**Replace permanently with 
              * suggestionbox31@gmail.com after debugging.
@@ -47,8 +47,8 @@ public class MailManager{
 
             email.setFrom(new InternetAddress(fromAddress));
 
-            for(String to : toAddresses)
-                email.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            for(String to : toAddresses)email.addRecipient(
+                    Message.RecipientType.TO, new InternetAddress(to));
 
             email.setSubject(subject);
 
@@ -58,6 +58,17 @@ public class MailManager{
         }catch(MessagingException mex){
             mex.printStackTrace();
         }
+    }
+    
+    /**
+     * Prepares the given email for sending.
+     * @param email The String to be prepared.
+     * @return The prepared email.
+     */
+    public static ArrayList<String> prep(String email){
+        ArrayList<String> ret = new ArrayList<>();
+        ret.add(email);
+        return ret;
     }
     
     //Testing: Delete After done debugging.

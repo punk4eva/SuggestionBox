@@ -51,9 +51,16 @@ public class Policies{
         
         frame.add(policies);
         
+        //This will set the Agree and Disagree buttons the the right of the screen
         frame.setLayout(new FlowLayout(FlowLayout.RIGHT, 3, 3));
+        //These will set the buttons to the bottom of the screen: Just add ",c" 
+        //to the frame.add
+        //c.gridx = 0;
+        //c.gridy = 1;
+        //c.anchor = GridBagConstraints.SOUTHWEST;
         frame.add(Agree);
-
+        
+        //c.anchor = GridBagConstraints.SOUTHEAST;
         frame.add(Disagree);
         
         frame.revalidate();

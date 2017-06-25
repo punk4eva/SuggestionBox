@@ -123,6 +123,8 @@ public class MainClass implements ActionListener{
                 login.display(frame);
                 break;
             case "Agree":
+                //Uncomment the next line after completion.
+                //frame.setLayout(new GridBagLayout());
                 //Sent to homepage
                 break;
             case "Disagree":

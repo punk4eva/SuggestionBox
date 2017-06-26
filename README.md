@@ -19,7 +19,7 @@ Sanitisation of user input. PARTIALLY DONE
 
 A login page. DONE
 
-An application wrapper.
+An application wrapper. Use a compiler to create an excecutable.
 
 A way for users to submit suggestions.
 

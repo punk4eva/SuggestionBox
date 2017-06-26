@@ -23,9 +23,9 @@ An application wrapper.
 
 A way for users to submit suggestions.
 
-A user policy.
+A user policy. DONE
 
-A policy page.
+A policy page. DONE
 
 A way for users to upvote suggestions.
 

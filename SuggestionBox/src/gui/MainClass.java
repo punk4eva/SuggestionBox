@@ -114,22 +114,22 @@ public class MainClass implements ActionListener{
                         String given = null;
                         boolean success = false;
                         while(!success){
-                        while(given==null){
-                            /**MailManager.send("SuggestionBox Verification Code",
-                                "Your verification code is:   " + verCode,
-                                "suggestionbox31@gmail.com",
-                                MailManager.prep(email));*/
-                            given = (String)JOptionPane.showInputDialog(frame,
-                                "What is the verification code that you recieved"
-                                + " in an email?", "Confirm Email",
-                                JOptionPane.QUESTION_MESSAGE, null,
-                                new String[] {"OK", "Resend"}, "OK");
-                        }
-                        if(given.toUpperCase().equals(verCode)){
-                            userlog.newUser(email, signup.Password.getText(), 
-                                signup.Email.getText());
-                            success = true;
-                        }
+                            while(given==null){
+                                /**MailManager.send("SuggestionBox Verification Code",
+                                    "Your verification code is:   " + verCode,
+                                    "suggestionbox31@gmail.com",
+                                    MailManager.prep(email));*/
+                                given = (String)JOptionPane.showInputDialog(frame,
+                                    "What is the verification code that you recieved"
+                                    + " in an email?", "Confirm Email",
+                                    JOptionPane.QUESTION_MESSAGE, null,
+                                    new String[] {"OK", "Resend"}, "OK");
+                            }
+                            if(given.toUpperCase().equals(verCode)){
+                                userlog.newUser(email, signup.Password.getText(), 
+                                    signup.Email.getText());
+                                success = true;
+                            }
                         }
                         userlog.newUser(signup.Username.getText(), 
                         signup.Password.getText(), signup.Email.getText());

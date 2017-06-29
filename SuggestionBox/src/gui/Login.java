@@ -3,12 +3,14 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
+import javax.swing.ImageIcon;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import logic.ImageHandler;
 
 /*
 * @author Charlie Hands
@@ -39,8 +41,16 @@ public class Login{
         PTitle = new JLabel("Password:");
         Title = new JLabel("WHSB Suggestion System");
         Message = new JLabel("Sign in with your Username and Password.");
-        Loginbtn = new JButton("Login");
-        Signupbtn = new JButton("Sign Up");
+        Loginbtn = new JButton(new ImageIcon("images//login.png"));
+        Loginbtn.setOpaque(false);
+        Loginbtn.setContentAreaFilled(false);
+        Loginbtn.setBorderPainted(false);
+        Loginbtn.setActionCommand("Login");
+        Signupbtn = new JButton(new ImageIcon("images//signup.png"));
+        Signupbtn.setOpaque(false);
+        Signupbtn.setContentAreaFilled(false);
+        Signupbtn.setBorderPainted(false);
+        Loginbtn.setActionCommand("Sign Up");
         Loginbtn.addActionListener(main);
         Signupbtn.addActionListener(main);
     }
@@ -68,7 +78,6 @@ public class Login{
         PTitle.setFont(font);
         Title.setFont(titleFont);
         Message.setFont(font);
-        Loginbtn.setFont(btnfont);
         Signupbtn.setFont(btnfont);
 
         c.ipady = 30;

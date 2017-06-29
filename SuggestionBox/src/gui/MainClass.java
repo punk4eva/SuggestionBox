@@ -14,9 +14,9 @@ import javax.swing.JOptionPane;
 import logic.PasswordHolder;
 import logic.UserLog;
 import logic.SuggestionLog;
+import logic.MailManager;
 
 import exceptions.*;
-import logic.MailManager;
 
 /**
  * @author Charlie Hands
@@ -94,6 +94,7 @@ public class MainClass implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e){
+        System.out.println(e.getActionCommand());
         switch(e.getActionCommand()){
             case "Login":
                 try{

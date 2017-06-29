@@ -1,4 +1,4 @@
 <username>Adam Whittaker</username><pass>897a3819b06ffd3db8443cbdef7bc683bffbb74d984aa62fbc37b631c9b530dd</pass><status>OK</status><desc>Co-creator of this project.</desc><email>adam271828@gmail.com</email>
 /EndOfEntry
-<username>Charlie Hands</username><pass>73f0f2b5212afcfd71b3218938338812b5a27c5e37d2f817a62b2861446b249b</pass><status>OK</status><desc></desc><email>charlie.h.hands@gmail.com</email>
+<username>Charlie Hands</username><pass>73f0f2b5212afcfd71b3218938338812b5a27c5e37d2f817a62b2861446b249b</pass><status>OK</status><desc>The other Co-creator of this project.</desc><email>charlie.h.hands@gmail.com</email>
 /EndOfEntry

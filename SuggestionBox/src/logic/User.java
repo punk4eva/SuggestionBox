@@ -61,14 +61,16 @@ public class User{
      * Prints the user's basic information.
      */
     protected void print(){
-        System.out.print("User: " + username + "\nEmail: " + emailAddress);
+        System.out.print("User: " + username + "\nEmail: " + emailAddress +
+                "\nStatus: " + statMessage);
     }
     
     /**
      * Prints the user's basic information and a newline.
      */
     protected void println(){
-        System.out.println("User: " + username +"\nEmail: " + emailAddress);
+        System.out.println("User: " + username +"\nEmail: " + emailAddress +
+                "\nStatus: " + statMessage);
     }
     
     /**

@@ -50,7 +50,7 @@ public class Login{
         Signupbtn.setOpaque(false);
         Signupbtn.setContentAreaFilled(false);
         Signupbtn.setBorderPainted(false);
-        Loginbtn.setActionCommand("Sign Up");
+        Signupbtn.setActionCommand("Sign Up");
         Loginbtn.addActionListener(main);
         Signupbtn.addActionListener(main);
     }

@@ -36,6 +36,7 @@ public class MainClass implements ActionListener{
     private static Login login;
     private static SignUp signup;
     private static Policies policies;
+    private static Homepage home;
 
     /**
      * Initializes the frame.
@@ -50,9 +51,10 @@ public class MainClass implements ActionListener{
         login = new Login(this);
         signup = new SignUp(this);
         policies = new Policies(this);
+        home = new Homepage(this);
         
         //Uncomment the next line to activate testing mode.
-        //if(true){new TestingPage(this).display(frame);}else
+        if(true){home.display(frame);}else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.
@@ -154,8 +156,9 @@ public class MainClass implements ActionListener{
                 break;
             case "Agree":
                 //Uncomment the next line after completion.
-                //frame.setLayout(new GridBagLayout());
+                frame.setLayout(new GridBagLayout());
                 //Sent to homepage
+                home.display(frame);
                 break;
             case "Disagree":
                 switch(JOptionPane.showConfirmDialog(frame, 

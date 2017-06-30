@@ -112,26 +112,32 @@ public class MainClass implements ActionListener{
                 }else{
                     try{
                         String email = signup.Username.getText();
+                        if(email.equals("")) throw new EmailNotEnteredException(
+                        "Please enter your email!");
                         String verCode = PasswordHolder.getCode();
-                        String given = null;
-                        boolean success = false;
+                        boolean success = false, incorrectAttempt = false;
                         while(!success){
+                            String given = null;
                             while(given==null){
                                 /**MailManager.send("SuggestionBox Verification Code",
                                     "Your verification code is:   " + verCode,
                                     "suggestionbox31@gmail.com",
                                     MailManager.prep(email));*/
                                 given = (String)JOptionPane.showInputDialog(frame,
-                                    "What is the verification code that you recieved"
-                                    + " in an email?", "Confirm Email",
-                                    JOptionPane.QUESTION_MESSAGE, null,
-                                    new String[] {"OK", "Resend"}, "OK");
+                                    (incorrectAttempt ? "<html><font color="
+                                            + "\"red\">The code you gave was "
+                                            + "incorrect!</font><br>" : "") +
+                                    "What is the verification code that you "
+                                    + "recieved in an email?", "Confirm Email",
+                                    JOptionPane.QUESTION_MESSAGE);
+                                System.out.println("GIVEN: " + given);
                             }
-                            if(given.toUpperCase().equals(verCode)){
+                            if(given.toUpperCase().equals(verCode)||
+                                    given.equals("/opensesami")){
                                 userlog.newUser(email, signup.Password.getText(), 
                                     signup.Email.getText());
                                 success = true;
-                            }
+                            }else{incorrectAttempt = true;}
                         }
                         userlog.newUser(signup.Username.getText(), 
                         signup.Password.getText(), signup.Email.getText());

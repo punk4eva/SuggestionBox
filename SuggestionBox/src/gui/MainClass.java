@@ -17,6 +17,11 @@ import logic.SuggestionLog;
 import logic.MailManager;
 
 import exceptions.*;
+import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import logic.FontImage;
+import logic.ImageHandler;
 
 /**
  * @author Charlie Hands
@@ -31,6 +36,7 @@ public class MainClass implements ActionListener{
     protected static SuggestionLog suglog = new SuggestionLog();
     
     public static Random r = new Random();
+    private static boolean loggedIn = false;
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
     private static Login login;
@@ -45,7 +51,6 @@ public class MainClass implements ActionListener{
         frame = new JFrame("WHSB Suggestion System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setLayout(new GridBagLayout());
         getBare(frame);
         
         login = new Login(this);
@@ -54,7 +59,7 @@ public class MainClass implements ActionListener{
         home = new Homepage(this);
         
         //Uncomment the next line to activate testing mode.
-        if(true)home.display(frame); else
+        //if(true)home.display(frame); else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.
@@ -72,13 +77,17 @@ public class MainClass implements ActionListener{
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         int R = r.nextInt(205)+30;
         int G = r.nextInt(195)+60; 
         int B = r.nextInt(135)+120;
-        frame.getContentPane().setBackground(new Color(R, G, B));
-        return new Color(R, (G+127)%256, (B+127)%256);
+        //frame.getContentPane().setBackground(new Color(R, G, B));
+        frame.setLayout(new BorderLayout());
+        FontImage fi = ImageHandler.getRandomFontImage();
+        frame.setContentPane(new JLabel(fi.image));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setLayout(new GridBagLayout());
+        return fi.colour;
     }
     
     /**
@@ -107,6 +116,7 @@ public class MainClass implements ActionListener{
                     JOptionPane.showMessageDialog(frame, ex.getMessage(), 
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                login.clearFields();
                 break;
             case "Sign Up":
                 if(e.getSource()==login.Signupbtn){
@@ -151,13 +161,13 @@ public class MainClass implements ActionListener{
                     }
                 }
                 break;
-            case "<html>Back to<br>Login":
+            case "<html>Back to<br>Login": case "Log Out":
+                loggedIn = false;
                 login.display(frame);
                 break;
             case "Agree":
-                //Uncomment the next line after completion.
                 frame.setLayout(new GridBagLayout());
-                //Sent to homepage
+                loggedIn = true;
                 home.display(frame);
                 break;
             case "Disagree":
@@ -167,9 +177,13 @@ public class MainClass implements ActionListener{
                                 JOptionPane.YES_NO_OPTION)){
                     case 0: //Yes
                         frame.setLayout(new GridBagLayout());
+                        loggedIn = false;
                         login.display(frame);
                         break;
                 }
+                break;
+            case "View Policy":
+                policies.display(frame);
                 break;
         }
     }

@@ -55,9 +55,8 @@ public class Login{
         Signupbtn.addActionListener(main);
     }
 
-    /*
+    /**
      * Displays all the components in the JFrame
-     * 
      * @param frame The JFrame from MainClass
      */
     public void display(JFrame frame){
@@ -121,4 +120,12 @@ public class Login{
         frame.repaint();
     }
 	
+    /**
+     * Resets Login fields.
+     */
+    public void clearFields(){
+        Username.setText("");
+        Password.setText("");
+    }
+    
 }

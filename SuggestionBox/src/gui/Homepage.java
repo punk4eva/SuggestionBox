@@ -67,6 +67,12 @@ public class Homepage{
         logOut.setBorderPainted(false);
         logOut.setActionCommand("Log Out");
         c = new GridBagConstraints();
+        editProfile.addActionListener(main);
+        logOut.addActionListener(main);
+        viewNews.addActionListener(main);
+        viewPolicy.addActionListener(main);
+        viewSuggestions.addActionListener(main);
+        submitSuggestion.addActionListener(main);
         profTitle = new JLabel("View Profile");
         polTitle = new JLabel("View Policies");
         newsTitle = new JLabel("View News");

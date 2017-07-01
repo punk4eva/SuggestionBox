@@ -35,28 +35,28 @@ public class Homepage{
      * @unfinished
      */
     public Homepage(MainClass main){
-        editProfile = new JButton(new ImageIcon()); //TO COMPLETE
+        editProfile = new JButton(new ImageIcon("images/fullFace.png"));
         editProfile.setOpaque(false);
         editProfile.setContentAreaFilled(false);
         editProfile.setBorderPainted(false);
         editProfile.setActionCommand("Edit Profile");
         editProfile.setVisible(true);
-        submitSuggestion = new JButton(new ImageIcon()); //TO COMPLETE
+        submitSuggestion = new JButton(new ImageIcon("images/streak.png"));
         submitSuggestion.setOpaque(false);
         submitSuggestion.setContentAreaFilled(false);
         submitSuggestion.setBorderPainted(false);
         submitSuggestion.setActionCommand("Submit Suggestion");
-        viewSuggestions = new JButton(new ImageIcon()); //TO COMPLETE
+        viewSuggestions = new JButton(new ImageIcon("images/tie.png"));
         viewSuggestions.setOpaque(false);
         viewSuggestions.setContentAreaFilled(false);
         viewSuggestions.setBorderPainted(false);
-        viewSuggestions.setActionCommand("View Suggestions"); //TO COMPLETE
-        viewPolicy = new JButton(new ImageIcon());
+        viewSuggestions.setActionCommand("View Suggestions");
+        viewPolicy = new JButton(new ImageIcon("images/book.png"));
         viewPolicy.setOpaque(false);
         viewPolicy.setContentAreaFilled(false);
         viewPolicy.setBorderPainted(false);
         viewPolicy.setActionCommand("View Policy");
-        viewNews = new JButton(new ImageIcon()); //TO COMPLETE
+        viewNews = new JButton(new ImageIcon("images/eye.png"));
         viewNews.setOpaque(false);
         viewNews.setContentAreaFilled(false);
         viewNews.setBorderPainted(false);
@@ -103,9 +103,14 @@ public class Homepage{
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = GridBagConstraints.RELATIVE;
-        frame.add(logOut, c);
-        
+        frame.add(editProfile, c);
         c.gridy = 0;
-        frame.add(outTitle,c);
+        frame.add(profTitle, c);
+        
+        c.gridy = 3;
+        frame.add(logOut, c);
+        c.gridy = 2;
+        frame.add(outTitle, c);
     }
+    
 }

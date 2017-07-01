@@ -54,7 +54,7 @@ public class MainClass implements ActionListener{
         home = new Homepage(this);
         
         //Uncomment the next line to activate testing mode.
-        if(true){home.display(frame);}else
+        if(true)home.display(frame); else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.

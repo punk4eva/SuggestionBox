@@ -1,6 +1,8 @@
 
 package gui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,6 +40,7 @@ public class Homepage{
         editProfile.setContentAreaFilled(false);
         editProfile.setBorderPainted(false);
         editProfile.setActionCommand("Edit Profile");
+        editProfile.setVisible(true);
         submitSuggestion = new JButton(new ImageIcon()); //TO COMPLETE
         submitSuggestion.setOpaque(false);
         submitSuggestion.setContentAreaFilled(false);
@@ -73,6 +76,30 @@ public class Homepage{
     }
     
     public void display(JFrame frame){
-    
+        Color textCol = MainClass.getBare(frame);
+        
+        Font font = new Font("Arial", 10, 30);
+         
+        profTitle.setForeground(textCol);
+        polTitle.setForeground(textCol);
+        newsTitle.setForeground(textCol);
+        subTitle.setForeground(textCol);
+        outTitle.setForeground(textCol);
+        viewTitle.setForeground(textCol);
+         
+        profTitle.setFont(font);
+        polTitle.setFont(font);
+        newsTitle.setFont(font);
+        subTitle.setFont(font);
+        outTitle.setFont(font);
+        viewTitle.setFont(font);
+        
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = GridBagConstraints.RELATIVE;
+        frame.add(logOut, c);
+        
+        c.gridy = 0;
+        frame.add(outTitle,c);
     }
 }

@@ -41,12 +41,12 @@ public class Login{
         PTitle = new JLabel("Password:");
         Title = new JLabel("WHSB Suggestion System");
         Message = new JLabel("Sign in with your Username and Password.");
-        Loginbtn = new JButton(new ImageIcon("images//login.png"));
+        Loginbtn = new JButton(new ImageIcon("images/login.png"));
         Loginbtn.setOpaque(false);
         Loginbtn.setContentAreaFilled(false);
         Loginbtn.setBorderPainted(false);
         Loginbtn.setActionCommand("Login");
-        Signupbtn = new JButton(new ImageIcon("images//signup.png"));
+        Signupbtn = new JButton(new ImageIcon("images/signup.png"));
         Signupbtn.setOpaque(false);
         Signupbtn.setContentAreaFilled(false);
         Signupbtn.setBorderPainted(false);

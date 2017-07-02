@@ -35,33 +35,33 @@ public class Homepage{
      * @unfinished
      */
     public Homepage(MainClass main){
-        editProfile = new JButton(new ImageIcon("images/fullFace.png"));
+        editProfile = new JButton(new ImageIcon("images/fullFace256.png"));
         editProfile.setOpaque(false);
         editProfile.setContentAreaFilled(false);
         editProfile.setBorderPainted(false);
         editProfile.setActionCommand("Edit Profile");
         editProfile.setVisible(true);
-        submitSuggestion = new JButton(new ImageIcon("images/streak.png"));
+        submitSuggestion = new JButton(new ImageIcon("images/streak256.png"));
         submitSuggestion.setOpaque(false);
         submitSuggestion.setContentAreaFilled(false);
         submitSuggestion.setBorderPainted(false);
         submitSuggestion.setActionCommand("Submit Suggestion");
-        viewSuggestions = new JButton(new ImageIcon("images/tie.png"));
+        viewSuggestions = new JButton(new ImageIcon("images/tie256.png"));
         viewSuggestions.setOpaque(false);
         viewSuggestions.setContentAreaFilled(false);
         viewSuggestions.setBorderPainted(false);
         viewSuggestions.setActionCommand("View Suggestions");
-        viewPolicy = new JButton(new ImageIcon("images/book.png"));
+        viewPolicy = new JButton(new ImageIcon("images/book256.png"));
         viewPolicy.setOpaque(false);
         viewPolicy.setContentAreaFilled(false);
         viewPolicy.setBorderPainted(false);
         viewPolicy.setActionCommand("View Policy");
-        viewNews = new JButton(new ImageIcon("images/eye.png"));
+        viewNews = new JButton(new ImageIcon("images/eye256.png"));
         viewNews.setOpaque(false);
         viewNews.setContentAreaFilled(false);
         viewNews.setBorderPainted(false);
         viewNews.setActionCommand("View News");
-        logOut = new JButton(new ImageIcon("images/intellectualFace.png"));
+        logOut = new JButton(new ImageIcon("images/intellectualFace256.png"));
         logOut.setOpaque(false);
         logOut.setContentAreaFilled(false);
         logOut.setBorderPainted(false);
@@ -102,7 +102,30 @@ public class Homepage{
         
         c.gridx = 0;
         c.gridy = 1;
-        c.gridwidth = GridBagConstraints.RELATIVE;
+        c.ipadx = 10;
+        c.ipady = 10;
+        frame.add(viewSuggestions, c);
+        c.gridy = 0;
+        frame.add(viewTitle, c);
+        
+        c.gridy = 3;
+        frame.add(viewNews, c);
+        c.gridy = 2;
+        frame.add(newsTitle, c);
+        
+        c.gridx = 1;
+        c.gridy = 1;
+        frame.add(submitSuggestion, c);
+        c.gridy = 0;
+        frame.add(subTitle, c);
+        
+        c.gridy = 3;
+        frame.add(viewPolicy, c);
+        c.gridy = 2;
+        frame.add(polTitle, c);
+        
+        c.gridx = 2;
+        c.gridy = 1;
         frame.add(editProfile, c);
         c.gridy = 0;
         frame.add(profTitle, c);
@@ -111,6 +134,7 @@ public class Homepage{
         frame.add(logOut, c);
         c.gridy = 2;
         frame.add(outTitle, c);
+        
     }
     
 }

@@ -43,6 +43,10 @@ public class MainClass implements ActionListener{
     private static SignUp signup;
     private static Policies policies;
     private static Homepage home;
+    private static Profile profile;
+    private static SuggestionViewer suggestionViewer;
+    private static SuggestionEditor suggestionEditor;
+    private static News news;
 
     /**
      * Initializes the frame.
@@ -57,6 +61,10 @@ public class MainClass implements ActionListener{
         signup = new SignUp(this);
         policies = new Policies(this);
         home = new Homepage(this);
+        profile = new Profile(this);
+        suggestionViewer = new SuggestionViewer(this);
+        suggestionEditor = new SuggestionEditor(this);
+        news = new News(this);
         
         //Uncomment the next line to activate testing mode.
         if(true)home.display(frame); else
@@ -184,6 +192,18 @@ public class MainClass implements ActionListener{
                 break;
             case "View Policy":
                 policies.display(frame);
+                break;
+            case "Edit Profile":
+                profile.display(frame);
+                break;
+            case "View Suggestions":
+                suggestionViewer.display(frame);
+                break;
+            case "Submit Suggestion":
+                suggestionEditor.display(frame);
+                break;
+            case "View News":
+                news.display(frame);
                 break;
         }
     }

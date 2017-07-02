@@ -16,18 +16,18 @@ import javax.swing.ImageIcon;
  */
 public class ImageHandler{
     
-    private static FontImage[] fontImages = new FontImage[] {
+    private static final FontImage[] FONTIMAGES = new FontImage[] {
         new FontImage("charlotteHurst", new Color(160, 12, 44)),
         new FontImage("dancersFoot", new Color(192, 135, 237)),
         new FontImage("heatherMurray", new Color(98, 209, 166)),
         new FontImage("intellectuallyCurious", new Color(8, 9, 22)),
         new FontImage("landscape", new Color(7, 247, 0)),
         new FontImage("liamHeatherson", new Color(226, 148, 13)),
-        new FontImage("roughSeasAndMemories", new Color(255,255,255)),
+        new FontImage("roughSeasAndMemories", new Color(0,0,0)),
         new FontImage("theSea", new Color(0, 0, 255)),
         new FontImage("thrillsInSpills", new Color(96, 233, 21)),
         new FontImage("urbanNightscape", new Color(206, 141, 12)),
-        new FontImage("youth2012", new Color(255,255,255))
+        new FontImage("youth2012", new Color(0,0,0))
     };
     
     /**
@@ -67,7 +67,7 @@ public class ImageHandler{
      * @return The random FontImage.
      */
     public static FontImage getRandomFontImage(){
-        return fontImages[MainClass.r.nextInt(fontImages.length)];
+        return FONTIMAGES[MainClass.r.nextInt(FONTIMAGES.length)];
     }
     
 }

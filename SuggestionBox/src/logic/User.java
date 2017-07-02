@@ -29,7 +29,7 @@ public class User{
     }
     
     protected enum AccountType{
-        STUDENT, TEACHER
+        STUDENT, MODERATOR, TEACHER, HEAD
     }
     
     

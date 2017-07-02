@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,18 +11,16 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 
 import logic.PasswordHolder;
 import logic.UserLog;
 import logic.SuggestionLog;
 import logic.MailManager;
-
-import exceptions.*;
-import java.awt.BorderLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import logic.FontImage;
 import logic.ImageHandler;
+
+import exceptions.*;
 
 /**
  * @author Charlie Hands
@@ -67,7 +66,7 @@ public class MainClass implements ActionListener{
         news = new News(this);
         
         //Uncomment the next line to activate testing mode.
-        if(true)home.display(frame); else
+        //if(true)home.display(frame); else
         login.display(frame);
         
         //always push the userlog and suglog at the end or users get deleted.

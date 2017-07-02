@@ -73,7 +73,10 @@ public class UserLog{
                         seg.indexOf("<desc>")+6, seg.indexOf("</desc>"));
                 String stat = seg.substring(
                         seg.indexOf("<status>")+8, seg.indexOf("</status>"));
-                User user = new User(name, hPass, email, desc);
+                String type = seg.substring(
+                        seg.indexOf("<type>")+6, seg.indexOf("</type>"));
+                User user = new User(name, hPass, email, desc, 
+                        User.AccountType.valueOf(type));
                 user.changeStatus(stat);
                 add(user);
             }
@@ -93,7 +96,8 @@ public class UserLog{
             rw.write("<username>"+u.username+"</username><pass>"+
                     u.hashedPassword+"</pass><status>"+u.statMessage.toString()+
                     "</status><desc>"+u.description+"</desc><email>"+
-                    u.emailAddress+"</email>");
+                    u.emailAddress+"</email><type>"+u.accountType.toString()+
+                    "</type>");
             return u;
         }).forEach(ignore -> {
             rw.write("/EndOfEntry");

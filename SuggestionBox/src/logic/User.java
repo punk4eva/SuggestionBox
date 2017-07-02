@@ -21,10 +21,15 @@ public class User{
     protected String emailAddress;
     protected Status statMessage = Status.OK;
     protected String description = "";
+    protected AccountType accountType = AccountType.STUDENT;
     //protected ArrayList<Integer> suggestionsList; TOO COMPLICATED
     
     protected enum Status{
         HAPPY, OK, SAD, STRESSED, BORED, ANGRY
+    }
+    
+    protected enum AccountType{
+        STUDENT, TEACHER
     }
     
     
@@ -34,13 +39,29 @@ public class User{
      * @param un The user's username.
      * @param hashedpw The user's hashed password.
      * @param email The user's email.
-     * @param desc the user's description.
+     * @param desc The user's description.
      */
     public User(String un, String hashedpw, String email, String desc){
         username = un;
         hashedPassword = hashedpw;
         emailAddress = email;
         description = desc;
+    }
+    
+    /**
+     * @param un The user's username.
+     * @param hashedpw The user's hashed password.
+     * @param email The user's email.
+     * @param desc The user's description.
+     * @param accType The user's account type. 
+     */
+    public User(String un, String hashedpw, String email, String desc, 
+            AccountType accType){
+        username = un;
+        hashedPassword = hashedpw;
+        emailAddress = email;
+        description = desc;
+        accountType = accType;
     }
     
     /**

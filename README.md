@@ -15,7 +15,7 @@ A sign up page. DONE
 
 A way to send emails. ALMOST DONE
 
-Sanitisation of user input. PARTIALLY DONE
+Sanitisation of user input. PROBABLY DONE
 
 A login page. DONE
 
@@ -27,6 +27,10 @@ A user policy. DONE
 
 A policy page. DONE
 
-A way for users to upvote suggestions.
+A Home page. DONE
+
+A way for users to view and upvote suggestions.
+
+A way for students to look at news posted by teachers.
 
 More.

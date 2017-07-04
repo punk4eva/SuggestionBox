@@ -35,16 +35,17 @@ public class SoundHandler{
         new Thread(
                 () -> {
                     try{
-                        Clip clip = AudioSystem.getClip();
-                        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                                file);
-                        clip.open(inputStream);
-                        FloatControl gainControl =
-                                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                        gainControl.setValue(-f); //Reduce volume by f decibels
                         while(true){
+                            Clip clip = AudioSystem.getClip();
+                            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                                file);
+                            clip.open(inputStream);
+                            FloatControl gainControl =
+                                    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                            gainControl.setValue(-f); //Reduce volume by f decibels
                             clip.start();
                             Thread.sleep(clip.getMicrosecondLength()/1000);
+                            clip.close();
                         }
                     }catch(Exception e){
                         System.err.println(e.getMessage());

@@ -21,6 +21,7 @@ import logic.FontImage;
 import logic.ImageHandler;
 
 import exceptions.*;
+import logic.SoundHandler;
 
 /**
  * @author Charlie Hands
@@ -55,6 +56,8 @@ public class MainClass implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         getBare(frame);
+        
+        SoundHandler.playLoop(10.0f);
         
         login = new Login(this);
         signup = new SignUp(this);
@@ -113,6 +116,7 @@ public class MainClass implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         System.out.println(e.getActionCommand());
+        SoundHandler.playRandomButtonSound(10.0f);
         switch(e.getActionCommand()){
             case "Login":
                 try{

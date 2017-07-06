@@ -22,7 +22,7 @@ public class ImageHandler{
         new FontImage("heatherMurray", new Color(98, 209, 166)),
         new FontImage("intellectuallyCurious", new Color(8, 9, 22)),
         new FontImage("landscape", new Color(7, 247, 0)),
-        new FontImage("liamHeatherson", new Color(226, 148, 13)),
+        new FontImage("liamHeatherson", new Color(255, 178, 43)),
         new FontImage("roughSeasAndMemories", new Color(0,0,0)),
         new FontImage("theSea", new Color(0, 0, 255)),
         new FontImage("thrillsInSpills", new Color(96, 233, 21)),

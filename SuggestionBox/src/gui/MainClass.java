@@ -36,7 +36,8 @@ public class MainClass implements ActionListener{
     protected static SuggestionLog suglog = new SuggestionLog();
     
     public static Random r = new Random();
-    private static boolean loggedIn = false;
+    public static boolean loggedIn = false;
+    public static String Username;
 
     protected JFrame frame; //Variables don't get edited in methods, only fields.
     private static Login login;
@@ -47,7 +48,7 @@ public class MainClass implements ActionListener{
     private static SuggestionViewer suggestionViewer;
     private static SuggestionEditor suggestionEditor;
     private static News news;
-    private static viewPolicies viewpolicies;
+    
 
     /**
      * Initializes the frame.
@@ -68,7 +69,7 @@ public class MainClass implements ActionListener{
         suggestionViewer = new SuggestionViewer(this);
         suggestionEditor = new SuggestionEditor(this);
         news = new News(this);
-        viewpolicies = new viewPolicies(this);
+        
         
         //Uncomment the next line to activate testing mode.
         //if(true)home.display(frame); else
@@ -124,6 +125,7 @@ public class MainClass implements ActionListener{
                 try{
                     PasswordHolder.passwordValidation(login.Username.getText(),
                             login.Password.getText(), userlog.userList);
+                    Username = login.Username.getText();
                     policies.display(frame);
                 }catch(PasswordNotFoundException ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage(), 
@@ -196,7 +198,7 @@ public class MainClass implements ActionListener{
                 }
                 break;
             case "View Policy":
-                viewpolicies.display(frame);
+                policies.display(frame);
                 break;
             case "Edit Profile":
                 profile.display(frame);

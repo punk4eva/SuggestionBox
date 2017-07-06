@@ -54,6 +54,13 @@ public class UserLog{
         return containsUsername(start+1, un);
     }
     
+    public User get(String usnm) throws Exception{
+        for(User user : userList){
+            if(usnm.equals(user.username)) return user;
+        }
+        throw new Exception("User "+usnm+" not found.");
+    }
+    
     /**
      * Pulls user profiles from storage.
      * @potentiallyUnfinishedAlthoughICantFindAnyErrors

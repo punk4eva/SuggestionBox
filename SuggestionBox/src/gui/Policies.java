@@ -24,6 +24,7 @@ public class Policies{
     JLabel Title;
     JButton Agree;
     JButton Disagree;
+    JButton back;
     GridBagConstraints c;
     
     public Policies(MainClass main){
@@ -32,6 +33,7 @@ public class Policies{
         Disagree = new JButton("Disagree");
         Agree.addActionListener(main);
         Disagree.addActionListener(main);
+        back = new JButton("Back");
         c = new GridBagConstraints();
         policies = new JScrollPane(new ScrollableImage(
                 new ImageIcon("images/policies.png"), 5));
@@ -59,10 +61,12 @@ public class Policies{
         //c.gridx = 0;
         //c.gridy = 1;
         //c.anchor = GridBagConstraints.SOUTHWEST;
-        frame.add(Agree);
-        
-        //c.anchor = GridBagConstraints.SOUTHEAST;
-        frame.add(Disagree);
+        if(!MainClass.loggedIn){
+            frame.add(Agree);
+            //c.anchor = GridBagConstraints.SOUTHEAST;
+            frame.add(Disagree);
+        }
+        else frame.add(back);
         
         frame.revalidate();
         frame.repaint();

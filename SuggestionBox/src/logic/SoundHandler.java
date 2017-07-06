@@ -50,9 +50,7 @@ public class SoundHandler{
                     }catch(Exception e){
                         System.err.println(e.getMessage());
                     }
-        } // The wrapper thread is unnecessary, unless it blocks on the
-        // Clip finishing; see comments.
-        ).start();
+        }).start();
     }
     
 }

@@ -10,7 +10,6 @@ import java.util.logging.Logger;
  * @author Adam Whittaker
  * 
  * This class handles reading and writing from files.
- * @optimisable
  */
 public class ReadWrite{
     
@@ -75,11 +74,8 @@ public class ReadWrite{
      */
     protected void write(String str){
         try{
-            String s = read();
-            write = new FileWriter(file);
-            write.append(s);
-            write.append(str+"\n");
-            write.flush();
+            write = new FileWriter(file, true);
+            write.write("\n" + str);
             write.close();
         }catch(IOException e){
             Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, e);

@@ -31,12 +31,15 @@ public class Profile{
     
     public void display(JFrame frame){
         Color textcol = MainClass.getBare(frame);
-        System.out.println(MainClass.Username);
-         Font font = new Font("Arial", 10, 30);
+        
+        Font font = new Font("Arial", 10, 30);
         username.setFont(font);
         username.setForeground(textcol);
+        c.ipady = 30;
+        c.weightx = 0.0;
         c.gridx = 1;
-        c.gridy = 1;
+        c.gridy = 3;
+        c.anchor = GridBagConstraints.CENTER;
         frame.add(username, c);
         
         frame.revalidate();

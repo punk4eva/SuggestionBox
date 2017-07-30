@@ -126,6 +126,7 @@ public class MainClass implements ActionListener{
                     PasswordHolder.passwordValidation(login.Username.getText(),
                             login.Password.getText(), userlog.userList);
                     Username = login.Username.getText();
+                    System.out.println(Username);
                     policies.display(frame);
                 }catch(PasswordNotFoundException ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage(), 
@@ -134,47 +135,49 @@ public class MainClass implements ActionListener{
                 login.clearFields();
                 break;
             case "Sign Up":
-                if(e.getSource()==login.Signupbtn){
-                    signup.display(frame);
-                }else{
-                    try{
-                        String email = signup.Username.getText();
-                        if(email.equals("")) throw new EmailNotEnteredException(
-                        "Please enter your email!");
-                        String verCode = PasswordHolder.getCode();
-                        boolean success = false, incorrectAttempt = false;
-                        while(!success){
-                            String given = null;
-                            while(given==null){
-                                /**MailManager.send("SuggestionBox Verification Code",
-                                    "Your verification code is:   " + verCode,
-                                    "suggestionbox31@gmail.com",
-                                    MailManager.prep(email));*/
-                                given = (String)JOptionPane.showInputDialog(frame,
-                                    (incorrectAttempt ? "<html><font color="
-                                            + "\"red\">The code you gave was "
-                                            + "incorrect!</font><br>" : "") +
-                                    "What is the verification code that you "
-                                    + "recieved in an email?", "Confirm Email",
-                                    JOptionPane.QUESTION_MESSAGE);
-                                System.out.println("GIVEN: " + given);
-                            }
+                try{
+                    String email = signup.Email.getText();
+                    if(email.equals("")) throw new EmailNotEnteredException(
+                    "Please enter your email!");
+                    String verCode = PasswordHolder.getCode();
+                    boolean success = false, incorrectAttempt = false, cancel = false;
+                    while(!success && !cancel){
+                        String given = null;
+
+                            /**MailManager.send("SuggestionBox Verification Code",
+                                "Your verification code is:   " + verCode,
+                                "suggestionbox31@gmail.com",
+                                MailManager.prep(email));*/
+
+                            given = (String)JOptionPane.showInputDialog(frame,
+                                (incorrectAttempt ? "<html><font color="
+                                        + "\"red\">The code you gave was "
+                                        + "incorrect!</font><br>" : "") +
+                                "What is the verification code that you "
+                                + "recieved in an email?", "Confirm Email",
+                                JOptionPane.QUESTION_MESSAGE);
+                            System.out.println("GIVEN: " + given);
+
+                        try{
                             if(given.toUpperCase().equals(verCode)||
                                     given.equals("/opensesami")){
-                                userlog.newUser(email, signup.Password.getText(), 
-                                    signup.Email.getText());
+                                userlog.newUser(signup.Username.getText(), signup.Password.getText(), 
+                                    email);
                                 success = true;
                             }else{incorrectAttempt = true;}
-                        }
-                        userlog.newUser(signup.Username.getText(), 
-                        signup.Password.getText(), signup.Email.getText());
-                    }catch(PasswordUnsafeException | UserAlreadyExistsException 
-                            | UnsanitaryEntryException
-                            | EmailNotEnteredException ex){
-                        JOptionPane.showMessageDialog(frame, ex.getMessage(), 
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                        }catch(NullPointerException e1){
+                            cancel = true;
+                        }    
                     }
+                }catch(PasswordUnsafeException | UserAlreadyExistsException 
+                        | UnsanitaryEntryException
+                        | EmailNotEnteredException ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage(), 
+                        "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                break;
+            case "ToSignUp":
+                signup.display(frame);
                 break;
             case "<html>Back to<br>Login": case "Log Out":
                 loggedIn = false;

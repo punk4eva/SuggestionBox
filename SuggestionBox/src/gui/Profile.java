@@ -15,31 +15,38 @@ import javax.swing.JTextField;
  * @author Charlie Hands
  */
 public class Profile{
-        JLabel username;
-        JTextField description;
-        JComboBox status;
-        JTextField email;
-        JLabel usernameTitle;
-        JLabel descriptionTitle;
-        JLabel statusTitle;
-        JLabel emailTitle;
-        GridBagConstraints c;
+
+    JLabel username;
+    JTextField description;
+    JComboBox status;
+    JTextField email;
+    JLabel descriptionTitle;
+    JLabel statusTitle;
+    JLabel emailTitle;
+    GridBagConstraints c;
+
     public Profile(MainClass main){
         username = new JLabel(MainClass.Username);
+        email = new JTextField("", 15);
+        emailTitle = new JLabel("Email:");
         c = new GridBagConstraints();
     }
-    
+
     public void display(JFrame frame){
         Color textcol = MainClass.getBare(frame);
-        System.out.println(MainClass.Username);
-         Font font = new Font("Arial", 10, 30);
+        
+        Font font = new Font("Arial", 10, 30);
         username.setFont(font);
         username.setForeground(textcol);
         c.gridx = 1;
         c.gridy = 1;
-        frame.add(username, c);
-        
+        c.ipady = 30;
+        c.weightx = 0.0;
+        c.anchor = GridBagConstraints.CENTER;
+        frame.add(email, c);
+
         frame.revalidate();
         frame.repaint();
     }
+    
 }

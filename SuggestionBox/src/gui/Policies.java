@@ -34,6 +34,7 @@ public class Policies{
         Agree.addActionListener(main);
         Disagree.addActionListener(main);
         back = new JButton("Back");
+        back.addActionListener(main);
         c = new GridBagConstraints();
         policies = new JScrollPane(new ScrollableImage(
                 new ImageIcon("images/policies.png"), 5));
@@ -45,7 +46,7 @@ public class Policies{
     
     
     public void display(JFrame frame){
-        Color textCol = MainClass.getBare(frame);   
+        MainClass.getBare(frame);   
         Font btnfont = new Font("Arial", 10, 15);
         
         Agree.setFont(btnfont);

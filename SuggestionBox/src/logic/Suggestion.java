@@ -1,14 +1,17 @@
 
 package logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Adam Whittaker
  * 
  * This class handles the storage, addition and deletion of suggestions.
  */
-public class Suggestion{
+public class Suggestion implements Serializable{
     
+    private static final long serialVersionUID = 3;
     
     //Variable declaration
     protected String suggestion;

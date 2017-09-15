@@ -5,7 +5,14 @@ import exceptions.PasswordUnsafeException;
 import exceptions.UnsanitaryEntryException;
 import exceptions.UserAlreadyExistsException;
 import exceptions.EmailNotEnteredException;
+import java.util.List;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -16,12 +23,12 @@ import java.util.ArrayList;
  * @unfinished
  * @untested
  */
-public class UserLog{
+public class UserLog implements Serializable{
     
+    private static final long serialVersionUID = 0;
     
     //Variable declaration
-    public ArrayList<User> userList = new ArrayList<>();
-    private final File storageFile = new File("users.txt");
+    public List<User> userList = new ArrayList<>();
     
     //Interface allows lambda expressions to be given as parameters.
     protected interface Sort{
@@ -29,14 +36,7 @@ public class UserLog{
     }
     
     
-    //Constructor
-    
-    /**
-     * Creates a new instance of UserLog.
-     */
-    public UserLog(){
-        pull();
-    }
+    private UserLog(){}
     
     
     //Methods
@@ -54,6 +54,12 @@ public class UserLog{
         return containsUsername(start+1, un);
     }
     
+    /**
+     * Gets the User with the given username.
+     * @param usnm The username.
+     * @return The user.
+     * @throws Exception If the username doesn't exist.
+     */
     public User get(String usnm) throws Exception{
         for(User user : userList){
             if(usnm.equals(user.username)) return user;
@@ -61,54 +67,30 @@ public class UserLog{
         throw new Exception("User "+usnm+" not found.");
     }
     
+    
+    
     /**
-     * Pulls user profiles from storage.
-     * @potentiallyUnfinishedAlthoughICantFindAnyErrors
+     * Serializes this object.
      */
-    private void pull(){
-        String[] segments = 
-                new ReadWrite(storageFile).read().split("/EndOfEntry");
-        try{
-            for(String seg : segments){
-                String name = seg.substring(
-                        seg.indexOf("<username>")+10, seg.indexOf("</username>"));
-                String hPass = seg.substring(
-                        seg.indexOf("<pass>")+6, seg.indexOf("</pass>"));
-                String email = seg.substring(
-                        seg.indexOf("<email>")+7, seg.indexOf("</email>"));
-                String desc = seg.substring(
-                        seg.indexOf("<desc>")+6, seg.indexOf("</desc>"));
-                String stat = seg.substring(
-                        seg.indexOf("<status>")+8, seg.indexOf("</status>"));
-                String type = seg.substring(
-                        seg.indexOf("<type>")+6, seg.indexOf("</type>"));
-                User user = new User(name, hPass, email, desc, 
-                        User.AccountType.valueOf(type));
-                user.changeStatus(stat);
-                add(user);
-            }
-        }catch(StringIndexOutOfBoundsException e){
-            //The exception is thrown at the end of the for-loop as the last
-            //'/EndOfEntry' tag creates an empty String.
+    public void serialize(){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("users.ser")))){
+            out.writeObject(this);
+        }catch(IOException e){
+            e.printStackTrace(System.err);
         }
     }
     
     /**
-     * Writes user profiles from ArrayList to File.
+     * Deserializes this Object.
+     * @return The Object.
      */
-    public void push(){
-        ReadWrite rw = new ReadWrite(storageFile);
-        rw.clear();
-        userList.stream().map(u -> {
-            rw.write("<username>"+u.username+"</username><pass>"+
-                    u.hashedPassword+"</pass><status>"+u.statMessage.toString()+
-                    "</status><desc>"+u.description+"</desc><email>"+
-                    u.emailAddress+"</email><type>"+u.accountType.toString()+
-                    "</type>");
-            return u;
-        }).forEach(ignore -> {
-            rw.write("/EndOfEntry");
-        });
+    public static UserLog getInstance(){
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("users.ser")))){
+            return (UserLog) in.readObject();
+        }catch(IOException | ClassNotFoundException e){
+            e.printStackTrace(System.err);
+        }
+        return null;
     }
     
     /**
@@ -117,7 +99,6 @@ public class UserLog{
      */
     protected void add(User user){
         userList.add(user);
-        push();
     }
     
     /**

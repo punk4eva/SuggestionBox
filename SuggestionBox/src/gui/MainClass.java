@@ -32,8 +32,8 @@ public class MainClass implements ActionListener{
 
     //Full screen on school computer.
     public static final int WIDTH = 1280, HEIGHT = WIDTH / 5 * 4;
-    protected static UserLog userlog = new UserLog();
-    protected static SuggestionLog suglog = new SuggestionLog();
+    protected static UserLog userlog = UserLog.getInstance();
+    protected static SuggestionLog suglog = SuggestionLog.getInstance();
     
     public static Random r = new Random();
     public static boolean loggedIn = false;
@@ -75,13 +75,12 @@ public class MainClass implements ActionListener{
         //if(true)home.display(frame); else
         login.display(frame);
         
-        //always push the userlog and suglog at the end or users get deleted.
-        userlog.push();
-        suglog.push();
+        userlog.serialize();
+        suglog.serialize();
     }
     
     /**
-     * Provides a bare JFrame. May be optimizable.
+     * Provides a bare JFrame. May be optimisable.
      * @param frame The frame.
      * @return a non-contrast Color Object for text.
      */

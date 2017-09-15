@@ -2,12 +2,17 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 /**
  *
@@ -17,18 +22,23 @@ import javax.swing.JTextField;
 public class Profile{
 
     JLabel username;
-    JTextField description;
+    JTextArea description;
     JComboBox status;
     JTextField email;
     JLabel descriptionTitle;
     JLabel statusTitle;
     JLabel emailTitle;
+    JButton submit;
+    JButton cancel;
     GridBagConstraints c;
 
     public Profile(MainClass main){
         username = new JLabel(MainClass.Username);
-        email = new JTextField("", 15);
+        email = new JTextField(15);
+        description = new JTextArea(5, 20);
+        description.setMaximumSize(new Dimension(80, 20));
         emailTitle = new JLabel("Email:");
+        descriptionTitle = new JLabel("Tell us something about yourself...");
         c = new GridBagConstraints();
     }
 
@@ -46,6 +56,10 @@ public class Profile{
         c.weightx = 0.0;
         c.anchor = GridBagConstraints.CENTER;
         frame.add(email, c);
+        JScrollPane scrollpane = new JScrollPane(description);
+        scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        frame.add(scrollpane, c);
 
         frame.revalidate();
         frame.repaint();

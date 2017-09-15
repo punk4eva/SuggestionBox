@@ -6,7 +6,7 @@ import exceptions.PasswordUnsafeException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -87,7 +87,7 @@ public class PasswordHolder{
      * the password is incorrect.
      */
     public static void passwordValidation(String usr, String password,
-            ArrayList<User> userlst) throws PasswordNotFoundException{
+            List<User> userlst) throws PasswordNotFoundException{
         boolean unchecked = true;
         for(User user : userlst) if(usr.equals(user.username)){
             if(!user.hashedPassword.equals(hash(password))) throw new

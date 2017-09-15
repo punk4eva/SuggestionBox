@@ -3,7 +3,14 @@ package logic;
 
 import exceptions.UnsanitaryEntryException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -11,12 +18,12 @@ import java.util.ArrayList;
  * 
  * This class stores suggestion data.
  */
-public class SuggestionLog{
+public class SuggestionLog implements Serializable{
     
+    private static final long serialVersionUID = 2;
     
     //Variable declaration
-    public ArrayList<Suggestion> suggestionList = new ArrayList<>();
-    private final File storageFile = new File("suggestions.txt");
+    public List<Suggestion> suggestionList = new ArrayList<>();
     
     //Interface allows lambda expressions to be given as parameters.
     protected interface Sort{
@@ -24,55 +31,30 @@ public class SuggestionLog{
     }
     
     
-    //Constructor
-    
-    /**
-     * Creates a new instance of UserLog.
-     */
-    public SuggestionLog(){
-        pull();
-    }
-    
-    
     //Methods
-    
+
     /**
-     * Pulls suggestions from storage.
-     * @potentiallyUnfinishedAlthoughICantFindAnyErrors
+     * Serializes this object.
      */
-    private void pull(){
-        String[] segments = 
-                new ReadWrite(storageFile).read().split("/EndOfEntry");
-        try{
-            for(String seg : segments){
-                String sugg = seg.substring(
-                        seg.indexOf("<suggestion>")+12, seg.indexOf("</suggestion>"));
-                String auth = seg.substring(
-                        seg.indexOf("<author>")+8, seg.indexOf("</author>"));
-                int votes = Integer.parseInt(seg.substring(
-                        seg.indexOf("<votes>")+7, seg.indexOf("</votes>")));
-                add(new Suggestion(sugg, auth, votes));
-            }
-        }catch(StringIndexOutOfBoundsException | UnsanitaryEntryException e){
-            //The exception is thrown at the end of the for-loop as the last
-            //'/EndOfEntry' tag creates an empty String.
+    public void serialize(){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("suggestions.ser")))){
+            out.writeObject(this);
+        }catch(IOException e){
+            e.printStackTrace(System.err);
         }
     }
     
     /**
-     * Writes suggestions from ArrayList to File.
+     * Deserializes this Object.
+     * @return The Object.
      */
-    public void push(){
-        ReadWrite rw = new ReadWrite(storageFile);
-        rw.clear();
-        suggestionList.stream().map(s -> {
-            rw.write("<suggestion>"+s.suggestion+"</suggestion><author>"+
-                    s.author+"</author><votes>"+s.upvotes+
-                    "</votes>");
-            return s;
-        }).forEach(ignore -> {
-            rw.write("/EndOfEntry");
-        });
+    public static SuggestionLog getInstance(){
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("suggestions.ser")))){
+            return (SuggestionLog) in.readObject();
+        }catch(IOException | ClassNotFoundException e){
+            e.printStackTrace(System.err);
+        }
+        return null;
     }
     
     /**

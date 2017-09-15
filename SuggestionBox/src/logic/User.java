@@ -1,6 +1,7 @@
 
 package logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,8 +13,9 @@ import java.util.Random;
  * @unfinished
  * @untested
  */
-public class User{
+public class User implements Serializable{
     
+    private static final long serialVersionUID = 1;
     
     //Variable declaration
     protected String username;

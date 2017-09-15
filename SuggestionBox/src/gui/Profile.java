@@ -38,6 +38,8 @@ public class Profile{
         Font font = new Font("Arial", 10, 30);
         username.setFont(font);
         username.setForeground(textcol);
+        c.ipady = 30;
+        c.weightx = 0.0;
         c.gridx = 1;
         c.gridy = 1;
         c.ipady = 30;

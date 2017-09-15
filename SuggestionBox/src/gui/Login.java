@@ -49,7 +49,7 @@ public class Login{
         Signupbtn.setOpaque(false);
         Signupbtn.setContentAreaFilled(false);
         Signupbtn.setBorderPainted(false);
-        Signupbtn.setActionCommand("Sign Up");
+        Signupbtn.setActionCommand("ToSignUp");
         Loginbtn.addActionListener(main);
         Signupbtn.addActionListener(main);
     }

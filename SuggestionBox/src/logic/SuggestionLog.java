@@ -63,7 +63,6 @@ public class SuggestionLog implements Serializable{
      * @throws exceptions.UnsanitaryEntryException If input could be dangerous.
      */
     protected void add(Suggestion sug) throws UnsanitaryEntryException{
-        Sanitiser.sanitiseSuggestion(sug.suggestion);
         suggestionList.add(sug);
     }
     

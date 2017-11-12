@@ -54,10 +54,6 @@ public class PasswordHolder{
         if(containsSpec) points++;
         if(points<2) throw new PasswordUnsafeException("Password must contain "
                 + "numbers, uppercase and special characters.");
-        if(p.contains("DELETE")||p.contains("SELECT")||p.contains("INSERT")||
-                p.contains("ALTER")||p.contains("CREATE")||p.contains("USE")||
-                p.contains("SHOW")) throw new PasswordUnsafeException("Password"
-                        + " contains forbidden SQL syntax.");
         //Throwing Exceptions instead of returning a boolean allows for custom
         //return messages and exits the method.
     }

@@ -116,7 +116,6 @@ public class UserLog implements Serializable{
         PasswordHolder.sanitise(pass);
         for(User user : userList) if(user.username.equals(un)) throw new
             UserAlreadyExistsException("User " + un + " already exists.");
-        Sanitiser.sanitiseUser(un+pass+em);
         add(new User(un, PasswordHolder.hash(pass), em));
     }
     

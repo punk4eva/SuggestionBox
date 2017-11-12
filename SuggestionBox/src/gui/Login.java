@@ -19,37 +19,30 @@ import javax.swing.JTextField;
 */
 public class Login{
 
-    JTextField Username;
-    JPasswordField Password;
-    GridBagConstraints c;
-    JLabel UTitle;
-    JLabel PTitle;
-    JLabel Title;
-    JLabel Message;
-    JButton Loginbtn;
-    JButton Signupbtn;
+    static JTextField Username = new JTextField("", 15);
+    static JPasswordField Password = new JPasswordField("", 15);
+    static GridBagConstraints c = new GridBagConstraints();
+    static JLabel UTitle = new JLabel("Name:");
+    static JLabel PTitle = new JLabel("Password:");
+    static JLabel Title = new JLabel("WHSB Suggestion System");
+    static JLabel Message = new JLabel("Sign in with your Username and Password.");
+    JButton Loginbtn = new JButton(new ImageIcon("images/login.png"));
+    JButton Signupbtn = new JButton(new ImageIcon("images/signup.png"));
+    {
+        Loginbtn.setOpaque(false);
+        Loginbtn.setContentAreaFilled(false);
+        Loginbtn.setBorderPainted(false);
+        Loginbtn.setActionCommand("Login");
+        Signupbtn.setOpaque(false);
+        Signupbtn.setContentAreaFilled(false);
+        Signupbtn.setBorderPainted(false);
+        Signupbtn.setActionCommand("ToSignUp");
+    }
 
     /*
      * Initialises all the components
      */
     public Login(MainClass main){
-        Username = new JTextField("", 15);
-        Password = new JPasswordField("", 15);
-        c = new GridBagConstraints();
-        UTitle = new JLabel("Name:");
-        PTitle = new JLabel("Password:");
-        Title = new JLabel("WHSB Suggestion System");
-        Message = new JLabel("Sign in with your Username and Password.");
-        Loginbtn = new JButton(new ImageIcon("images/login.png"));
-        Loginbtn.setOpaque(false);
-        Loginbtn.setContentAreaFilled(false);
-        Loginbtn.setBorderPainted(false);
-        Loginbtn.setActionCommand("Login");
-        Signupbtn = new JButton(new ImageIcon("images/signup.png"));
-        Signupbtn.setOpaque(false);
-        Signupbtn.setContentAreaFilled(false);
-        Signupbtn.setBorderPainted(false);
-        Signupbtn.setActionCommand("ToSignUp");
         Loginbtn.addActionListener(main);
         Signupbtn.addActionListener(main);
     }

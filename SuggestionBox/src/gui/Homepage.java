@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,18 +17,18 @@ import javax.swing.JLabel;
 public class Homepage{
     
     GridBagConstraints c;
-    JButton editProfile;
-    JButton submitSuggestion;
-    JButton viewSuggestions;
-    JButton viewPolicy;
-    JButton viewNews;
-    JButton logOut;
-    JLabel profTitle;
-    JLabel subTitle;
-    JLabel viewTitle;
-    JLabel polTitle;
-    JLabel newsTitle;
-    JLabel outTitle;
+    JButton editProfile = new JButton(new ImageIcon("images/fullFace256.png"));
+    JButton submitSuggestion = new JButton(new ImageIcon("images/streak256.png"));
+    JButton viewSuggestions = new JButton(new ImageIcon("images/tie256.png"));
+    JButton viewPolicy = new JButton(new ImageIcon("images/book256.png"));
+    JButton viewNews = new JButton(new ImageIcon("images/eye256.png"));
+    JButton logOut = new JButton(new ImageIcon("images/intellectualFace256.png"));
+    JLabel profTitle = new JLabel("View Profile");;
+    JLabel subTitle = new JLabel("View Policies");
+    JLabel viewTitle = new JLabel("View News");;
+    JLabel polTitle = new JLabel("Submit a Suggestion"); 
+    JLabel newsTitle = new JLabel("Log out");;
+    JLabel outTitle = new JLabel("View Suggestions");   
     
     /**
      * Initializes all the components.
@@ -35,33 +36,27 @@ public class Homepage{
      * @unfinished
      */
     public Homepage(MainClass main){
-        editProfile = new JButton(new ImageIcon("images/fullFace256.png"));
         editProfile.setOpaque(false);
         editProfile.setContentAreaFilled(false);
         editProfile.setBorderPainted(false);
         editProfile.setActionCommand("Edit Profile");
         editProfile.setVisible(true);
-        submitSuggestion = new JButton(new ImageIcon("images/streak256.png"));
         submitSuggestion.setOpaque(false);
         submitSuggestion.setContentAreaFilled(false);
         submitSuggestion.setBorderPainted(false);
         submitSuggestion.setActionCommand("Submit Suggestion");
-        viewSuggestions = new JButton(new ImageIcon("images/tie256.png"));
         viewSuggestions.setOpaque(false);
         viewSuggestions.setContentAreaFilled(false);
         viewSuggestions.setBorderPainted(false);
         viewSuggestions.setActionCommand("View Suggestions");
-        viewPolicy = new JButton(new ImageIcon("images/book256.png"));
         viewPolicy.setOpaque(false);
         viewPolicy.setContentAreaFilled(false);
         viewPolicy.setBorderPainted(false);
         viewPolicy.setActionCommand("View Policy");
-        viewNews = new JButton(new ImageIcon("images/eye256.png"));
         viewNews.setOpaque(false);
         viewNews.setContentAreaFilled(false);
         viewNews.setBorderPainted(false);
         viewNews.setActionCommand("View News");
-        logOut = new JButton(new ImageIcon("images/intellectualFace256.png"));
         logOut.setOpaque(false);
         logOut.setContentAreaFilled(false);
         logOut.setBorderPainted(false);
@@ -73,12 +68,6 @@ public class Homepage{
         viewPolicy.addActionListener(main);
         viewSuggestions.addActionListener(main);
         submitSuggestion.addActionListener(main);
-        profTitle = new JLabel("View Profile");
-        polTitle = new JLabel("View Policies");
-        newsTitle = new JLabel("View News");
-        subTitle = new JLabel("Submit a Suggestion");
-        outTitle = new JLabel("Log out");
-        viewTitle = new JLabel("View Suggestions");
     }
     
     public void display(JFrame frame){
